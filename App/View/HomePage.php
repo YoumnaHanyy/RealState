@@ -39,37 +39,7 @@
       <p>Discover Your Perfect Property Match with our expert team, dedicated to finding the ideal investment in California, San Francisco, and Miami. We combine deep market knowledge with personalized service to ensure a seamless real estate experience as best as your needs. Trust us to guide you every step of the way.</p>
     </div>
   </section>
-<section class="trusted-section">
-    <div class="trusted-header">
-      <h2 class="trusted-title">Trusted by</h2>
-      <h1 class="trusted-subtitle">100 Million <span>buyers</span></h1>
-      <p class="trusted-note">Only we connect you directly to the person that knows the most about a property for sale, the listing agent.</p>
-    </div>
 
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">01</div>
-        <div class="feature-content">
-          <h3 class="feature-title">Explore great neighborhoods</h3>
-          <p class="feature-description">Explore neighborhoods, in-depth research, and insights on 20,000+ neighborhoods.</p>
-          <a href="#" class="feature-link">
-            Browse neighborhoods <span class="arrow-icon">→</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">02</div>
-        <div class="feature-content">
-          <h3 class="feature-title">Find highly rated best property</h3>
-          <p class="feature-description">Find the very best schools with in-depth reviews and ratings from multiple experts.</p>
-          <a href="#" class="feature-link">
-            Discover properties <span class="arrow-icon">→</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
 
 
    <section class="most-viewed-section">
@@ -132,6 +102,174 @@
       <div class="pagination-dot"></div>
     </div>
   </section>
+<section class="trusted-section">
+    <div class="trusted-header">
+      <h2 class="trusted-title">Trusted by</h2>
+      <h1 class="trusted-subtitle">100 Million <span>buyers</span></h1>
+      <p class="trusted-note">Only we connect you directly to the person that knows the most about a property for sale, the listing agent.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">01</div>
+        <div class="feature-content">
+          <h3 class="feature-title">Explore great neighborhoods</h3>
+          <p class="feature-description">Explore neighborhoods, in-depth research, and insights on 20,000+ neighborhoods.</p>
+          <a href="#" class="feature-link">
+            Browse neighborhoods <span class="arrow-icon">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">02</div>
+        <div class="feature-content">
+          <h3 class="feature-title">Find highly rated best property</h3>
+          <p class="feature-description">Find the very best schools with in-depth reviews and ratings from multiple experts.</p>
+          <a href="#" class="feature-link">
+            Discover properties <span class="arrow-icon">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+   <section class="cities-section">
+    <div class="section-header">
+      <h2 class="section-title">Find Properties in These Cities</h2>
+    </div>
+
+    <div class="cities-grid">
+      <div class="city-card">
+        <img src="/REALSTATE/Public/images/pic5.jpg" alt="Chicago" class="city-image">
+        <div class="city-overlay">
+          <h3 class="city-name">Chicago</h3>
+          <p class="properties-count">1,245 Properties</p>
+        </div>
+      </div>
+
+      <div class="city-card">
+        <img src="/REALSTATE/Public/images/pic6.png" alt="Miami" class="city-image">
+        <div class="city-overlay">
+          <h3 class="city-name">Miami</h3>
+          <p class="properties-count">867 Properties</p>
+        </div>
+      </div>
+
+      <div class="city-card">
+        <img src="/REALSTATE/Public/images/pic7.jpg" alt="Los Angeles" class="city-image">
+        <div class="city-overlay">
+          <h3 class="city-name">Los Angeles</h3>
+          <p class="properties-count">1,032 Properties</p>
+        </div>
+      </div>
+
+      <div class="city-card">
+        <img src="/REALSTATE/Public/images/pic8.jpg" alt="San Francisco" class="city-image">
+        <div class="city-overlay">
+          <h3 class="city-name">San Francisco</h3>
+          <p class="properties-count">754 Properties</p>
+        </div>
+      </div>
+
+      <div class="city-card">
+        <img src="/REALSTATE/Public/images/pic9.jpg" alt="Seattle" class="city-image">
+        <div class="city-overlay">
+          <h3 class="city-name">Seattle</h3>
+          <p class="properties-count">623 Properties</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <div class="pagination-dot active"></div>
+      <div class="pagination-dot"></div>
+      <div class="pagination-dot"></div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-logo">
+          <div class="logo-icon">H</div>
+          <div class="logo-text">Homazon</div>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <i>fb</i>
+          </a>
+          <a href="#" class="social-link">
+            <i>tw</i>
+          </a>
+          <a href="#" class="social-link">
+            <i>ig</i>
+          </a>
+          <a href="#" class="social-link">
+            <i>li</i>
+          </a>
+          <a href="#" class="social-link">
+            <i>yt</i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-col">
+          <div class="contact-info">
+            <div class="contact-item">
+              <i>📍</i>
+              <p>1234 Main St, San Diego, CA 92101, US</p>
+            </div>
+            <div class="contact-item">
+              <i>📞</i>
+              <p>1-800-456-7890</p>
+            </div>
+            <div class="contact-item">
+              <i>✉️</i>
+              <p>support@homazon.com</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Categories</h3>
+          <a href="#">Luxury Homes</a>
+          <a href="#">Apartments</a>
+          <a href="#">Condos</a>
+          <a href="#">Land</a>
+          <a href="#">Commercial</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Our Company</h3>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Blog</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Sitemap</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Newsletter</h3>
+          <p>Stay updated with our latest news and properties.</p>
+          <div class="newsletter">
+            <div class="newsletter-form">
+              <input type="email" placeholder="Your email address" class="newsletter-input">
+              <button class="newsletter-button">→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Homazon. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
   <script src="/REALSTATE/Public/js/HomePagee.js"></script>
 </body>
 </html>
