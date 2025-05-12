@@ -5,5 +5,7 @@ class HomeController {
         include_once __DIR__ . '/../View/HomePage.php';
 
     }
+
 }
+
 ?>
