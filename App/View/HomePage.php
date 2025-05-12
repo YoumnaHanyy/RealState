@@ -13,7 +13,7 @@
     <div class="logo">HOUSOFT</div>
     <nav>
       <a href="#">About Us</a>
-      <a href="#">Properties</a>
+      <a href="Poperties.php">Properties</a>
       <a href="#">Services</a>
       <a href="#">Blog →</a>
       <a href="#" class="sign-up-btn">Sign Up</a>
