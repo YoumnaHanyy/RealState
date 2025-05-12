@@ -10,16 +10,15 @@ switch ($page) {
         $controller = new HomeController();
         $controller->index();
         break;
-    default:
-        echo "404 - Page not found";
-        break;
-
-     case 'signup':  
+         case 'signup':  
         $controller = new SignupController();
         $controller->index(); 
         break;
     default:
         echo "404 - Page not found";
+        break;
+
     
+  
 
 }

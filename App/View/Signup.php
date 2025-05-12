@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-        <link rel="stylesheet" href="Signup.css" />
-        <script src="Signup.js"></script>
+        <link rel="stylesheet" href="/REALSTATE/Public/css/Signup.css"">
+        <script src="/Public/js/Signup.js"></script>
 
 
     
