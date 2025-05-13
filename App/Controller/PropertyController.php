@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Success
                 $_SESSION['success_message'] = "Property added successfully!";
                 // Redirect to the properties list page or a success page
-                header("Location: /REALSTATE/View/Properties.php"); // Assuming you have a Properties list page
+                header("Location: /REALSTATE/index.php?page=properties"); // Assuming you have a Properties list page
                 exit();
             } else {
                 // Database insertion failed

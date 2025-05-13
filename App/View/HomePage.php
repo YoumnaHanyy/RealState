@@ -9,16 +9,16 @@
 
 </head>
 <body>
- <header class="navbar">
-  <div class="logo">HOUSOFT</div>
-  <nav>
-    <a href="#">About Us</a>
-    <a href="Poperties.php">Properties</a>
+  <header class="navbar">
+    <div class="logo">HOUSOFT</div>
+    <nav>
+     <a href="#">About Us</a>
+    <a href="/REALSTATE/index.php?page=properties">Properties</a>
     <a href="#">Services</a>
     <a href="#">Blog →</a>
     <a href="/REALSTATE/App/View/AddProperty.php">Add Property</a>  <a href="#" class="sign-up-btn">Sign Up</a>
-  </nav>
-</header>
+    </nav>
+  </header>
   
   <section class="hero">
     <div class="dark-overlay"></div>
@@ -139,42 +139,44 @@
     </div>
 
     <div class="cities-grid">
-      <div class="city-card">
+
+
+      <a href="index.php?page=properties&location=Cairo" class="city-card">
         <img src="/REALSTATE/Public/images/pic5.jpg" alt="Chicago" class="city-image">
         <div class="city-overlay">
-          <h3 class="city-name">Chicago</h3>
+          <h3 class="city-name">Cairo</h3>
           <p class="properties-count">1,245 Properties</p>
         </div>
-      </div>
+</a>
 
-      <div class="city-card">
-        <img src="/REALSTATE/Public/images/pic6.png" alt="Miami" class="city-image">
-        <div class="city-overlay">
-          <h3 class="city-name">Miami</h3>
-          <p class="properties-count">867 Properties</p>
-        </div>
-      </div>
+   <a href="index.php?page=properties&location=New%20Cairo" class="city-card">
+  <img src="/REALSTATE/Public/images/pic6.png" alt="New Cairo" class="city-image">
+  <div class="city-overlay">
+    <h3 class="city-name">New Cairo</h3>
+    <p class="properties-count">867 Properties</p>
+  </div>
+</a>
 
-      <div class="city-card">
+      <a href="index.php?page=properties&location=Giza" class="city-card">
         <img src="/REALSTATE/Public/images/pic7.jpg" alt="Los Angeles" class="city-image">
         <div class="city-overlay">
-          <h3 class="city-name">Los Angeles</h3>
+          <h3 class="city-name">Giza</h3>
           <p class="properties-count">1,032 Properties</p>
         </div>
-      </div>
+</a>
 
-      <div class="city-card">
+      <a href="index.php?page=properties&location=Maadi" class="city-card">
         <img src="/REALSTATE/Public/images/pic8.jpg" alt="San Francisco" class="city-image">
         <div class="city-overlay">
-          <h3 class="city-name">San Francisco</h3>
+          <h3 class="city-name">Maadi</h3>
           <p class="properties-count">754 Properties</p>
         </div>
-      </div>
+</a>
 
       <div class="city-card">
         <img src="/REALSTATE/Public/images/pic9.jpg" alt="Seattle" class="city-image">
         <div class="city-overlay">
-          <h3 class="city-name">Seattle</h3>
+          <h3 class="city-name">Sheikh Zayed</h3>
           <p class="properties-count">623 Properties</p>
         </div>
       </div>
