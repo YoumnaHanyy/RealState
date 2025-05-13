@@ -9,16 +9,16 @@
 
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">HOUSOFT</div>
-    <nav>
-      <a href="#">About Us</a>
-      <a href="Poperties.php">Properties</a>
-      <a href="#">Services</a>
-      <a href="#">Blog →</a>
-      <a href="#" class="sign-up-btn">Sign Up</a>
-    </nav>
-  </header>
+ <header class="navbar">
+  <div class="logo">HOUSOFT</div>
+  <nav>
+    <a href="#">About Us</a>
+    <a href="Poperties.php">Properties</a>
+    <a href="#">Services</a>
+    <a href="#">Blog →</a>
+    <a href="/REALSTATE/App/View/AddProperty.php">Add Property</a>  <a href="#" class="sign-up-btn">Sign Up</a>
+  </nav>
+</header>
   
   <section class="hero">
     <div class="dark-overlay"></div>
