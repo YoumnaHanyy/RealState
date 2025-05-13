@@ -26,12 +26,17 @@ unset($_SESSION['error_message']);
     <link rel="stylesheet" href="/REALSTATE/Public/css/AddProperty.css"> </head>
 <body>
 
-    <?php
-        // Include your header/navbar if it's a separate file
-        // For demonstration, let's assume the header is part of this file or included elsewhere
-        // If you have a header component, include it here:
-        // include __DIR__ . '/partials/header.php'; // Example include path
-    ?>
+     <header class="navbar">
+    <div class="logo">HOUSOFT</div>
+    <nav>
+      <a href="#">About Us</a>
+      <a href="/REALSTATE/index.php?page=properties">Properties</a>
+      <a href="#">Services</a>
+      <a href="#">Blog →</a>
+      <a href="/REALSTATE/App/View/AddProperty.php">Add Property</a>
+      <a href="#" class="sign-up-btn">Sign Up</a>
+    </nav>
+  </header>
 
     <div class="container">
         <h2>Add New Property</h2>
