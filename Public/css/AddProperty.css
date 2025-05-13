@@ -1,86 +1,300 @@
-/* Basic styling for the form container */
-.container {
-    max-width: 600px;
-    margin: 20px auto; /* Center the container with margin */
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+/* HOUSOFT Property Form - Final Enhanced CSS */
+
+:root {
+    --primary: #1a1a1a;
+    --secondary: #d4af37;
+    --light: #f5f5f5;
+    --gray: #e5e5e5;
+    --dark-gray: #333333;
+    --blue-accent: #007bff;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
 }
 
-/* Heading style */
-.container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+/* Body Styling */
+body {
+    background-color: var(--light);
+    color: var(--primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* Styling for form groups (label + input) */
-.form-group {
-    margin-bottom: 15px;
+/* Navbar */
+.navbar {
+    background-color: var(--primary);
+    color: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
 }
 
-/* Styling for labels */
-.form-group label {
-    display: block; /* Make labels appear on their own line */
-    margin-bottom: 5px;
+.logo {
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #555;
+    letter-spacing: 1px;
 }
 
-/* Styling for text, number, and file inputs */
-.form-group input[type="text"],
-.form-group input[type="number"],
-.form-group input[type="file"] {
-    width: 100%; /* Make inputs fill the width of their container */
-    padding: 10px; /* Increase padding for better spacing */
-    border: 1px solid #ccc;
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--secondary);
+}
+
+.sign-up-btn {
+    background-color: var(--secondary);
+    color: var(--primary);
+    border: none;
+    padding: 0.6rem 1.5rem;
     border-radius: 4px;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.sign-up-btn:hover {
+    background-color: #c6a533;
+    transform: translateY(-2px);
+}
+
+/* Property Form Container */
+.property-form-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #1A1A1A;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    color: #FFFFFF;
+}
+
+.property-form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, #C89536 0%, #D9A74F 100%);
+}
+
+.form-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #444;
+    text-align: center;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #CCCCCC;
     font-size: 16px;
 }
 
-/* Specific adjustment for file input padding if needed */
-.form-group input[type="file"] {
-    padding: 8px; /* File inputs can behave differently with padding */
+.form-control,
+textarea.form-control,
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #2D2D2D;
+    color: #FFFFFF;
+    transition: var(--transition);
+    box-sizing: border-box;
 }
 
-/* Style for the submit button */
-.form-group button {
-    display: block; /* Make the button a block element */
-    width: 100%; /* Make the button full width */
-    background-color: #007bff; /* Example primary button color */
-    color: white;
-    padding: 12px 20px; /* Increase padding for a larger button */
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #AAAAAA;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #D9A74F;
+    box-shadow: 0 0 6px rgba(217, 167, 79, 0.3);
+    outline: none;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+/* File Upload Style */
+.file-upload-container {
+    position: relative;
+    border: 2px dashed #444;
+    border-radius: 6px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+    background-color: #2D2D2D;
+}
+
+.file-upload-container:hover {
+    border-color: #D9A74F;
+}
+
+.file-upload-label {
+    display: block;
+    color: #CCCCCC;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.file-upload-btn {
+    background-color: #444;
     border: none;
+    padding: 8px 20px;
     border-radius: 4px;
-    cursor: pointer; /* Indicate it's clickable */
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.file-upload-btn:hover {
+    background-color: #D9A74F;
+    color: #1A1A1A;
+}
+
+.file-name {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #CCCCCC;
+}
+
+/* Submit Button */
+.submit-button {
+    background: #D9A74F;
+    color: #1A1A1A;
+    border: none;
+    padding: 14px 0;
+    border-radius: 6px;
     font-size: 18px;
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: var(--transition);
+    margin-top: 20px;
 }
 
-/* Hover effect for the button */
-.form-group button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+.submit-button:hover {
+    background-color: #C89536;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(217, 167, 79, 0.3);
 }
 
-/* Styling for success messages */
+/* Messages */
+.message {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
 .message.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 4px;
+    background-color: #2d4d2d;
+    color: #28a745;
+    border: 1px solid #3c6e3c;
 }
 
-/* Styling for error messages */
 .message.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    padding: 10px;
+    background-color: #4d2d2d;
+    color: #dc3545;
+    border: 1px solid #6e3c3c;
+}
+
+/* Features Section */
+.features-section {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
     margin-bottom: 15px;
-    border-radius: 4px;
+    width: 48%;
+}
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(217, 167, 79, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #D9A74F;
+}
+
+.feature-text {
+    font-size: 14px;
+    color: #CCCCCC;
+}
+
+@media (max-width: 576px) {
+    .property-form-container {
+        padding: 20px;
+        margin: 20px 15px;
+    }
+
+    .form-title {
+        font-size: 24px;
+    }
+
+    .feature-item {
+        width: 100%;
+    }
 }
