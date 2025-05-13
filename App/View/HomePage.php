@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +15,64 @@
       <a href="#">Properties</a>
       <a href="#">Services</a>
       <a href="#">Blog →</a>
-      <a href="#" class="sign-up-btn">Sign Up</a>
+      <a href="/index.php?page=signup" class="sign-up-btn">Sign Up</a>
     </nav>
   </header>
+  
+  <?php if (isset($_SESSION['home_message'])): ?>
+  <div class="success-alert">
+    <div class="success-content">
+      <?= htmlspecialchars($_SESSION['home_message']) ?>
+      <button class="close-button" onclick="this.parentElement.parentElement.style.display='none';">×</button>
+    </div>
+  </div>
+  <style>
+    .success-alert {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .success-content {
+      background-color: #bd8c4c;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      animation: fadeIn 0.5s;
+    }
+    .close-button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      margin-left: 15px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <script>
+    // Auto-hide the message after 5 seconds
+    setTimeout(function() {
+      var alert = document.querySelector('.success-alert');
+      if (alert) {
+        alert.style.display = 'none';
+      }
+    }, 5000);
+  </script>
+  <?php 
+    // Clear the message after displaying it
+    unset($_SESSION['home_message']); 
+  ?>
+  <?php endif; ?>
   
   <section class="hero">
     <div class="dark-overlay"></div>

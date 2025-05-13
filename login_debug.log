@@ -1,0 +1,94 @@
+LoginController::authenticate() called - 2025-05-13 22:55:35
+POST data: Array
+(
+    [csrf_token] => cc345aed3aa13d2c78ee221a08f7f377215e5250ccc8bc381c82762a115d257a
+    [email] => ziadomar@gmail.com
+    [password] => 123456qwer
+)
+
+CSRF token mismatch
+Login error: Security violation: CSRF token mismatch
+LoginController::authenticate() called - 2025-05-13 22:55:51
+POST data: Array
+(
+    [csrf_token] => 89c6bc5077ebae9fab0f639c5f24deacc797dd2e5dfd06c7fdaefbbdc90e9db7
+    [email] => ziadomar@gmail.com
+    [password] => 123456qwer
+)
+
+Attempting to verify login for email: ziadomar@gmail.com
+AuthModel::verifyLogin called for email: ziadomar@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: ziad  (ID: 18)
+Session variables set. Redirecting based on role: buyer
+LoginController::authenticate() called - 2025-05-13 22:57:14
+POST data: Array
+(
+    [csrf_token] => 89c6bc5077ebae9fab0f639c5f24deacc797dd2e5dfd06c7fdaefbbdc90e9db7
+    [email] => ziadomar@gmail.com
+    [password] => 123456qwer
+)
+
+Attempting to verify login for email: ziadomar@gmail.com
+AuthModel::verifyLogin called for email: ziadomar@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: ziad  (ID: 18)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-13 22:57:55
+POST data: Array
+(
+    [csrf_token] => 59b47d8fe0d315b76ee512c398c7b6783a2b8dfe86e0adfe5408ca864b75ba14
+    [email] => ziadomar@gmail.com
+    [password] => 123456qwer
+)
+
+Attempting to verify login for email: ziadomar@gmail.com
+AuthModel::verifyLogin called for email: ziadomar@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: ziad  (ID: 18)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-13 22:58:01
+POST data: Array
+(
+    [csrf_token] => 59b47d8fe0d315b76ee512c398c7b6783a2b8dfe86e0adfe5408ca864b75ba14
+    [email] => ziadomar@gmail.com
+    [password] => 123456qwerjj
+)
+
+Attempting to verify login for email: ziadomar@gmail.com
+AuthModel::verifyLogin called for email: ziadomar@gmail.com
+User found, verifying password
+Password verification failed
+Authentication failed
+Login error: Invalid email or password
+LoginController::authenticate() called - 2025-05-13 22:59:38
+POST data: Array
+(
+    [csrf_token] => bfa3e0d4b3de8517a486ea113667ddaea575781db82352b7261ca95585dd550a
+    [email] => ziadomar@gmail.com
+    [password] => 123456qwer
+)
+
+Attempting to verify login for email: ziadomar@gmail.com
+AuthModel::verifyLogin called for email: ziadomar@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: ziad  (ID: 18)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-13 22:59:43
+POST data: Array
+(
+    [csrf_token] => 25cdf2a09e8492eaa830991b9a35eac5a6e135b9ba7938c329af307ba7213562
+    [email] => ziadomar@gmail.com
+    [password] => wtwgwgw
+)
+
+Attempting to verify login for email: ziadomar@gmail.com
+AuthModel::verifyLogin called for email: ziadomar@gmail.com
+User found, verifying password
+Password verification failed
+Authentication failed
+Login error: Incorrect email or password

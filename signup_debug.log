@@ -1,0 +1,115 @@
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-13 22:37:00
+POST data: Array
+(
+    [csrf_token] => e5ee05af1d69cded964e27391eab327985f8eb18130bdb3f2104ed402ff3ab97
+    [fullName] => ziad 
+    [email] => zxksssiad@gmail.com
+    [password] => q]px,kqxq
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: zxksssiad@gmail.com
+BuyerSignupStrategy: User data: Name: ziad , Email: zxksssiad@gmail.com, Type: buyer, Created: 2025-05-13 22:37:01
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=ziad , email=zxksssiad@gmail.com, userType=buyer, createdAt=2025-05-13 22:37:01
+UserRepository: Executing statement
+UserRepository: Insert successful, new ID: 16
+BuyerSignupStrategy: User saved successfully with ID: 16
+Strategy result: Array
+(
+    [success] => 1
+    [message] => Buyer account created successfully!
+    [user_id] => 16
+)
+
+Signup successful, redirecting to homepage
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-13 22:50:43
+POST data: Array
+(
+    [csrf_token] => 518695b40eecfd293ee93eaf9d649e2cf6b543edbd8c373009b2ebb10f18f95e
+    [fullName] => ziad 
+    [email] => ziahbbd@gmail.com
+    [password] => du4u4848
+    [admin_code] => 
+    [userType] => agent
+)
+
+Getting strategy for user type: agent
+Building user object
+User object built successfully
+Processing signup with strategy
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=ziad , email=ziahbbd@gmail.com, userType=agent, createdAt=2025-05-13 22:50:43
+UserRepository: Executing statement
+UserRepository: Insert successful, new ID: 17
+Strategy result: Array
+(
+    [success] => 1
+    [message] => Agent account created successfully! Your account will be reviewed by our team.
+    [user_id] => 17
+)
+
+Signup successful, redirecting to homepage
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-13 22:55:26
+POST data: Array
+(
+    [csrf_token] => 1c2f77eb49d10e9ba954356132c10c44625593b8c26e7b0ab951fe39de887314
+    [fullName] => ziad 
+    [email] => ziadomar@gmail.com
+    [password] => 123456qwer
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: ziadomar@gmail.com
+BuyerSignupStrategy: User data: Name: ziad , Email: ziadomar@gmail.com, Type: buyer, Created: 2025-05-13 22:55:26
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=ziad , email=ziadomar@gmail.com, userType=buyer, createdAt=2025-05-13 22:55:26
+UserRepository: Executing statement
+UserRepository: Insert successful, new ID: 18
+BuyerSignupStrategy: User saved successfully with ID: 18
+Strategy result: Array
+(
+    [success] => 1
+    [message] => Buyer account created successfully!
+    [user_id] => 18
+)
+
+Signup successful, redirecting to homepage
