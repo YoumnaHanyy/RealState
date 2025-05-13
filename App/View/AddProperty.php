@@ -44,7 +44,7 @@ unset($_SESSION['error_message']);
             <div class="message error"><?php echo htmlspecialchars($error_message); ?></div>
         <?php endif; ?>
 
-        <form action="/REALSTATE/App/Controller/PropertyController.php" method="POST" enctype="multipart/form-data">
+        <form action="/RealState/App/Controller/PropertyController.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="image">Property Image:</label>
                 <input type="file" id="image" name="image" accept="image/*" required>
@@ -69,6 +69,11 @@ unset($_SESSION['error_message']);
                 <label for="location">Location:</label>
                 <input type="text" id="location" name="location" required>
             </div>
+            <div class="form-group">
+    <label for="details">Details:</label><br>
+    <textarea id="details" name="details" rows="4" cols="50"></textarea>
+</div>
+
 
             <div class="form-group">
                 <button type="submit">Add Property</button>

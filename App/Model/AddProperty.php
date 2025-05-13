@@ -17,8 +17,7 @@ class Property {
      * @return bool True on success, false on failure.
      */
     public function createProperty(array $data): bool {
-        $sql = "INSERT INTO properties (name, price, developer, location, image) VALUES (:name, :price, :developer, :location, :image)";
-
+       $sql = "INSERT INTO properties (name, price, developer, location, image, details) VALUES (:name, :price, :developer, :location, :image, :details)";
         try {
             $stmt = $this->conn->prepare($sql);
 
@@ -28,6 +27,7 @@ class Property {
             $stmt->bindParam(':developer', $data['developer']);
             $stmt->bindParam(':location', $data['location']);
             $stmt->bindParam(':image', $data['image']);
+            $stmt->bindParam(':details', $data['details']); // Add this line
 
             // Execute the statement
             return $stmt->execute();

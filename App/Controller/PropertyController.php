@@ -20,11 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $price = filter_var($_POST['price'], FILTER_VALIDATE_FLOAT); // Validate price as float
     $developer = htmlspecialchars(trim($_POST['developer']));
     $location = htmlspecialchars(trim($_POST['location']));
+    $details = htmlspecialchars(trim($_POST['details']));
+
 
     // Basic validation
     if (empty($name) || $price === false || empty($developer) || empty($location) || empty($_FILES['image']['name'])) {
         $_SESSION['error_message'] = "Please fill in all fields.";
-        header("Location: /REALSTATE/View/AddProperty.php"); // Redirect back to the form
+        header("Location: /RealState/View/AddProperty.php"); // Redirect back to the form
         exit();
     }
 
@@ -71,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         // An error occurred, redirect back with error message
-        header("Location: /REALSTATE/View/AddProperty.php");
+        header("Location: /RealState/View/AddProperty.php");
         exit();
     } else {
         // if everything is ok, try to upload file
@@ -84,7 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'price' => $price,
                 'developer' => $developer,
                 'location' => $location,
-                'image' => $unique_image_name // Store the unique filename
+                'image' => $unique_image_name, // Store the unique filename
+                 'details' => $details // You've included 'details' here
             ];
 
             // 3. Call the Model to Insert Data
@@ -92,25 +95,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Success
                 $_SESSION['success_message'] = "Property added successfully!";
                 // Redirect to the properties list page or a success page
-                header("Location: /REALSTATE/index.php?page=properties"); // Assuming you have a Properties list page
+                header("Location: /RealState/index.php?page=properties"); // Assuming you have a Properties list page
                 exit();
             } else {
                 // Database insertion failed
                 $_SESSION['error_message'] = "Error adding property to database.";
                 // You might want to delete the uploaded file in case of a DB error
                 // unlink($target_file);
-                header("Location: /REALSTATE/View/AddProperty.php"); // Redirect back to the form
+                header("Location: /RealState/View/AddProperty.php"); // Redirect back to the form
                 exit();
             }
         } else {
             $_SESSION['error_message'] = "Sorry, there was an error uploading your file.";
-            header("Location: /REALSTATE/View/AddProperty.php"); // Redirect back to the form
+            header("Location: /RealState/View/AddProperty.php"); // Redirect back to the form
             exit();
         }
     }
 } else {
     // If accessed directly without POST, redirect to the form
-    header("Location: /REALSTATE/View/AddProperty.php");
+    header("Location: /RealState/View/AddProperty.php");
     exit();
 }
 ?>
