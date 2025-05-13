@@ -14,6 +14,8 @@ switch ($page) {
         $controller->properties(); // Add this line
         break;
 
+
+        
     default:
         echo "404 - Page not found";
 }
