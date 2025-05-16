@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Admin.js loaded - Version 2.0');
+    
     // Sidebar Toggle
     const sidebarToggle = document.getElementById('sidebarToggle');
     const sidebar = document.querySelector('.sidebar');
@@ -10,8 +12,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Check if we have edited user data in localStorage
+    // IMPORTANT: Check if we're on the dashboard page and if there's a user table
+    const isOnDashboard = document.querySelector('.dashboard-content') !== null;
+    const userTable = document.querySelector('.data-table tbody');
+    
+    console.log('Is on dashboard:', isOnDashboard);
+    console.log('User table found:', userTable !== null);
+    
+    // Check for edited user data in localStorage
     checkForEditedUser();
+    
+    // Check for new user data in localStorage - only if we're on the dashboard
+    if (isOnDashboard && userTable) {
+        checkForNewUser();
+    }
     
     // Delete Modal
     const deleteButtons = document.querySelectorAll('.btn-delete');
@@ -142,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     // If we're on the user profile page, redirect to the dashboard
                     alert('User deleted successfully!');
                     closeModalFunc();
-                    window.location.href = 'admindashboard.php';
+                    window.location.href = 'dashboard.php';
                 }
             }
         });
@@ -197,16 +211,51 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
     
+    // Add User Form Handling - Updated to store data in localStorage
     if (addUserForm) {
+        console.log('Add User Form found');
+        
         addUserForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Add User Form submitted');
+            
             if (!validateForm(this)) {
-                e.preventDefault();
-            } else {
-                // For demo purposes, prevent actual form submission
-                e.preventDefault();
-                alert('User added successfully!');
-                window.location.href = 'admindashboard.php';
+                console.log('Form validation failed');
+                return;
             }
+            
+            // Collect form data
+            const userData = {
+                id: Math.floor(Math.random() * 1000) + 6, // Generate random ID for demo
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                role: document.getElementById('role').value,
+                status: document.getElementById('status').value,
+                registrationDate: document.getElementById('registrationDate').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                zipCode: document.getElementById('zipCode').value,
+                country: document.getElementById('country').value,
+                profileImage: fileInput && fileInput.files.length > 0 
+                    ? "https://randomuser.me/api/portraits/men/1.jpg" // Use a static URL for demo
+                    : "https://randomuser.me/api/portraits/men/1.jpg"
+            };
+            
+            console.log('User data collected:', userData);
+            
+            // Store the new user data in localStorage
+            localStorage.setItem('newUser', JSON.stringify(userData));
+            console.log('User data saved to localStorage');
+            
+            // Show success message
+            alert('User added successfully!');
+            
+            // Redirect to dashboard - IMPORTANT: Make sure this matches your actual dashboard page name
+            window.location.href = 'dashboard.php';
         });
     }
     
@@ -258,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('User updated successfully!');
                 
                 // Redirect to dashboard
-                window.location.href = 'admindashboard.php';
+                window.location.href = 'dashboard.php';
             }
         });
     }
@@ -268,87 +317,236 @@ document.addEventListener('DOMContentLoaded', function() {
         const editedUserData = localStorage.getItem('editedUser');
         
         if (editedUserData) {
-            const userData = JSON.parse(editedUserData);
+            console.log('Found edited user data:', editedUserData);
             
-            // Find the user row in the table
-            const userRows = document.querySelectorAll('tr');
-            let userRow = null;
-            
-            userRows.forEach(row => {
-                const idCell = row.querySelector('td:first-child');
-                if (idCell && idCell.textContent === userData.id) {
-                    userRow = row;
-                }
-            });
-            
-            if (userRow) {
-                // Update the user information in the table
-                const userNameElement = userRow.querySelector('.user-info span');
-                if (userNameElement) {
-                    userNameElement.textContent = `${userData.firstName} ${userData.lastName}`;
-                }
+            try {
+                const userData = JSON.parse(editedUserData);
                 
-                const emailCell = userRow.querySelector('td:nth-child(3)');
-                if (emailCell) {
-                    emailCell.textContent = userData.email;
-                }
+                // Find the user row in the table
+                const userRows = document.querySelectorAll('tr');
+                let userRow = null;
                 
-                const roleCell = userRow.querySelector('td:nth-child(4) .badge');
-                if (roleCell) {
-                    // Update role badge
-                    roleCell.className = ''; // Clear existing classes
-                    roleCell.classList.add('badge');
+                userRows.forEach(row => {
+                    const idCell = row.querySelector('td:first-child');
+                    if (idCell && idCell.textContent === userData.id) {
+                        userRow = row;
+                    }
+                });
+                
+                if (userRow) {
+                    // Update the user information in the table
+                    const userNameElement = userRow.querySelector('.user-info span');
+                    if (userNameElement) {
+                        userNameElement.textContent = `${userData.firstName} ${userData.lastName}`;
+                    }
                     
-                    // Add appropriate badge class based on role
+                    const emailCell = userRow.querySelector('td:nth-child(3)');
+                    if (emailCell) {
+                        emailCell.textContent = userData.email;
+                    }
+                    
+                    const roleCell = userRow.querySelector('td:nth-child(4) .badge');
+                    if (roleCell) {
+                        // Update role badge
+                        roleCell.className = ''; // Clear existing classes
+                        roleCell.classList.add('badge');
+                        
+                        // Add appropriate badge class based on role
+                        switch (userData.role) {
+                            case 'admin':
+                                roleCell.classList.add('badge-admin');
+                                roleCell.textContent = 'Administrator';
+                                break;
+                            case 'agent':
+                                roleCell.classList.add('badge-agent');
+                                roleCell.textContent = 'Agent';
+                                break;
+                            case 'premium':
+                                roleCell.classList.add('badge-premium');
+                                roleCell.textContent = 'Premium User';
+                                break;
+                            case 'regular':
+                                roleCell.classList.add('badge-regular');
+                                roleCell.textContent = 'Regular User';
+                                break;
+                        }
+                    }
+                    
+                    const statusCell = userRow.querySelector('td:nth-child(5) .badge');
+                    if (statusCell) {
+                        // Update status badge
+                        statusCell.className = ''; // Clear existing classes
+                        statusCell.classList.add('badge');
+                        
+                        // Add appropriate badge class based on status
+                        switch (userData.status) {
+                            case 'active':
+                                statusCell.classList.add('badge-active');
+                                statusCell.textContent = 'Active';
+                                break;
+                            case 'inactive':
+                                statusCell.classList.add('badge-inactive');
+                                statusCell.textContent = 'Inactive';
+                                break;
+                            case 'suspended':
+                                statusCell.classList.add('badge-suspended');
+                                statusCell.textContent = 'Suspended';
+                                break;
+                        }
+                    }
+                    
+                    // If profile image was changed, we would update it here
+                    // In a real application, you would have the new image URL
+                    
+                    console.log('Updated edited user in table');
+                    
+                    // Clear the edited user data from localStorage
+                    localStorage.removeItem('editedUser');
+                } else {
+                    console.log('Could not find user row to update');
+                }
+            } catch (error) {
+                console.error('Error processing edited user data:', error);
+            }
+        }
+    }
+    
+    // Function to check for new user data and update the table
+    function checkForNewUser() {
+        const newUserData = localStorage.getItem('newUser');
+        
+        if (newUserData) {
+            console.log('Found new user data:', newUserData);
+            
+            try {
+                const userData = JSON.parse(newUserData);
+                
+                // Get the table body - IMPORTANT: Make sure this selector matches your actual table
+                const tableBody = document.querySelector('.data-table tbody');
+                console.log('Table body found:', tableBody !== null);
+                
+                if (tableBody) {
+                    // Create a new row for the user
+                    const newRow = document.createElement('tr');
+                    
+                    // Format the registration date
+                    let formattedDate = 'N/A';
+                    try {
+                        const regDate = new Date(userData.registrationDate);
+                        formattedDate = regDate.toLocaleDateString('en-US', {
+                            month: 'long',
+                            day: 'numeric',
+                            year: 'numeric'
+                        });
+                    } catch (e) {
+                        console.error('Error formatting date:', e);
+                    }
+                    
+                    // Set the role badge class and text
+                    let roleBadgeClass = 'badge-regular';
+                    let roleText = 'Regular';
+                    
                     switch (userData.role) {
                         case 'admin':
-                            roleCell.classList.add('badge-admin');
-                            roleCell.textContent = 'Administrator';
+                            roleBadgeClass = 'badge-admin';
+                            roleText = 'Administrator';
                             break;
                         case 'agent':
-                            roleCell.classList.add('badge-agent');
-                            roleCell.textContent = 'Agent';
+                            roleBadgeClass = 'badge-agent';
+                            roleText = 'Agent';
                             break;
                         case 'premium':
-                            roleCell.classList.add('badge-premium');
-                            roleCell.textContent = 'Premium User';
-                            break;
-                        case 'regular':
-                            roleCell.classList.add('badge-regular');
-                            roleCell.textContent = 'Regular User';
+                            roleBadgeClass = 'badge-premium';
+                            roleText = 'Premium';
                             break;
                     }
-                }
-                
-                const statusCell = userRow.querySelector('td:nth-child(5) .badge');
-                if (statusCell) {
-                    // Update status badge
-                    statusCell.className = ''; // Clear existing classes
-                    statusCell.classList.add('badge');
                     
-                    // Add appropriate badge class based on status
+                    // Set the status badge class and text
+                    let statusBadgeClass = 'badge-active';
+                    let statusText = 'Active';
+                    
                     switch (userData.status) {
-                        case 'active':
-                            statusCell.classList.add('badge-active');
-                            statusCell.textContent = 'Active';
-                            break;
                         case 'inactive':
-                            statusCell.classList.add('badge-inactive');
-                            statusCell.textContent = 'Inactive';
+                            statusBadgeClass = 'badge-inactive';
+                            statusText = 'Inactive';
                             break;
                         case 'suspended':
-                            statusCell.classList.add('badge-suspended');
-                            statusCell.textContent = 'Suspended';
+                            statusBadgeClass = 'badge-suspended';
+                            statusText = 'Suspended';
                             break;
                     }
+                    
+                    // Set the row HTML
+                    newRow.innerHTML = `
+                        <td>${userData.id}</td>
+                        <td>
+                            <div class="user-info">
+                                <img src="${userData.profileImage}" alt="${userData.firstName} ${userData.lastName}">
+                                <span>${userData.firstName} ${userData.lastName}</span>
+                            </div>
+                        </td>
+                        <td>${userData.email}</td>
+                        <td><span class="badge ${roleBadgeClass}">${roleText}</span></td>
+                        <td><span class="badge ${statusBadgeClass}">${statusText}</span></td>
+                        <td>${formattedDate}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="EditUser.php?id=${userData.id}" class="btn-edit" title="Edit"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="btn-delete" title="Delete" data-id="${userData.id}"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    `;
+                    
+                    console.log('New row created');
+                    
+                    // Insert the new row at the top of the table
+                    if (tableBody.firstChild) {
+                        tableBody.insertBefore(newRow, tableBody.firstChild);
+                    } else {
+                        tableBody.appendChild(newRow);
+                    }
+                    
+                    console.log('New row added to table');
+                    
+                    // Update the total users count in the stats card
+                    const totalUsersElement = document.querySelector('.stat-card:first-child .stat-details h3');
+                    if (totalUsersElement) {
+                        const currentCount = parseInt(totalUsersElement.textContent);
+                        totalUsersElement.textContent = (currentCount + 1).toString();
+                        console.log('Updated user count to:', currentCount + 1);
+                    } else {
+                        console.log('Could not find total users element');
+                    }
+                    
+                    // Add event listener to the new delete button
+                    const newDeleteBtn = newRow.querySelector('.btn-delete');
+                    if (newDeleteBtn) {
+                        newDeleteBtn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            
+                            // Get the user ID from the data-id attribute
+                            const userId = this.getAttribute('data-id');
+                            
+                            // Get the table row (tr) that contains this button
+                            const tableRow = this.closest('tr');
+                            
+                            // Open the delete modal
+                            openModal(userId, tableRow);
+                        });
+                        console.log('Added delete event listener to new row');
+                    }
+                    
+                    // Clear the new user data from localStorage AFTER we've used it
+                    localStorage.removeItem('newUser');
+                    console.log('Cleared new user data from localStorage');
+                } else {
+                    console.error('Could not find table body element');
                 }
-                
-                // If profile image was changed, we would update it here
-                // In a real application, you would have the new image URL
-                
-                // Clear the edited user data from localStorage
-                localStorage.removeItem('editedUser');
+            } catch (error) {
+                console.error('Error processing new user data:', error);
             }
+        } else {
+            console.log('No new user data found in localStorage');
         }
     }
     
@@ -387,7 +585,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isValid) {
                 // For demo purposes
                 alert('Property added successfully!');
-                window.location.href = 'admindashboard.php';
+                window.location.href = 'dashboard.php';
             } else {
                 alert('Please fill in all required fields.');
             }

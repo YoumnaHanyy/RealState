@@ -20,38 +20,36 @@ if ($conn->connect_error) {
 // Initialize variables
 $success = false;
 $error = "";
-$user_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
-
-// Check if user ID is provided
-if ($user_id <= 0) {
-    $error = "Invalid user ID";
-} else {
-    // Fetch user data from database
-    $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows === 0) {
-        $error = "User not found";
-    } else {
-        $userData = $result->fetch_assoc();
-    }
-    $stmt->close();
-}
+$formData = [
+    'first_name' => '',
+    'last_name' => '',
+    'username' => '',
+    'email' => '',
+    'password' => '',
+    'phone' => '',
+    'role' => 'regular',
+    'status' => 'active',
+    'registration_date' => date('Y-m-d'),
+    'profile_image' => '',
+    'email_notifications' => 0,
+    'property_alerts' => 0,
+    'newsletter' => 0
+];
 
 // Process form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($userData)) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
     $formData = [
         'first_name' => $_POST['first_name'] ?? '',
         'last_name' => $_POST['last_name'] ?? '',
         'username' => $_POST['username'] ?? '',
         'email' => $_POST['email'] ?? '',
+        'password' => $_POST['password'] ?? '',
         'phone' => $_POST['phone'] ?? '',
         'role' => $_POST['role'] ?? 'regular',
         'status' => $_POST['status'] ?? 'active',
-        'registration_date' => $_POST['registration_date'] ?? $userData['registration_date'],
+        'registration_date' => $_POST['registration_date'] ?? date('Y-m-d'),
+        'profile_image' => '',
         'email_notifications' => isset($_POST['email_notifications']) ? 1 : 0,
         'property_alerts' => isset($_POST['property_alerts']) ? 1 : 0,
         'newsletter' => isset($_POST['newsletter']) ? 1 : 0
@@ -71,9 +69,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($userData)) {
     if (empty($formData['username'])) {
         $errors[] = "Username is required";
     } else {
-        // Check if username already exists (excluding current user)
-        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ? AND id != ?");
-        $stmt->bind_param("si", $formData['username'], $user_id);
+        // Check if username already exists
+        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
+        $stmt->bind_param("s", $formData['username']);
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->num_rows > 0) {
@@ -87,9 +85,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($userData)) {
     } elseif (!filter_var($formData['email'], FILTER_VALIDATE_EMAIL)) {
         $errors[] = "Invalid email format";
     } else {
-        // Check if email already exists (excluding current user)
-        $stmt = $conn->prepare("SELECT id FROM users WHERE email = ? AND id != ?");
-        $stmt->bind_param("si", $formData['email'], $user_id);
+        // Check if email already exists
+        $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+        $stmt->bind_param("s", $formData['email']);
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->num_rows > 0) {
@@ -98,22 +96,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($userData)) {
         $stmt->close();
     }
     
-    // Check if password is being changed
-    $password_sql = "";
-    $password_param = "";
-    if (!empty($_POST['password'])) {
-        if ($_POST['password'] !== $_POST['confirm_password']) {
-            $errors[] = "Passwords do not match";
-        } else {
-            $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $password_sql = ", password = ?";
-            $password_param = $hashed_password;
-        }
+    if (empty($formData['password'])) {
+        $errors[] = "Password is required";
+    } elseif ($_POST['password'] !== $_POST['confirm_password']) {
+        $errors[] = "Passwords do not match";
     }
     
     // Process profile image if uploaded
-    $profile_image_sql = "";
-    $profile_image_param = "";
+    $profile_image = "";
     if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == 0) {
         $allowed = ['jpg', 'jpeg', 'png', 'gif'];
         $filename = $_FILES['profile_image']['name'];
@@ -134,8 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($userData)) {
             
             // Move the file
             if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $uploadPath)) {
-                $profile_image_sql = ", profile_image = ?";
-                $profile_image_param = $uploadPath;
+                $profile_image = $uploadPath;
             } else {
                 $errors[] = "Failed to upload image";
             }
@@ -144,77 +133,71 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($userData)) {
         }
     }
     
-    // If no errors, update user in database
+    // If no errors, insert user into database
     if (empty($errors)) {
-        // Prepare SQL statement
-        $sql = "UPDATE users SET 
-                first_name = ?, 
-                last_name = ?, 
-                username = ?, 
-                email = ?, 
-                phone = ?, 
-                role = ?, 
-                status = ?, 
-                registration_date = ?, 
-                email_notifications = ?, 
-                property_alerts = ?, 
-                newsletter = ?, 
-                updated_at = NOW()";
+        // Hash the password
+        $hashed_password = password_hash($formData['password'], PASSWORD_DEFAULT);
         
-        // Add password and profile image if they're being updated
-        $sql .= $password_sql . $profile_image_sql . " WHERE id = ?";
+        // Prepare SQL statement - following the exact sequence of the database fields
+        $stmt = $conn->prepare("INSERT INTO users (
+            first_name, 
+            last_name, 
+            username, 
+            email, 
+            password, 
+            phone, 
+            role, 
+            status, 
+            registration_date, 
+            profile_image, 
+            email_notifications, 
+            property_alerts, 
+            newsletter, 
+            created_at, 
+            updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())");
         
-        $stmt = $conn->prepare($sql);
-        
-        // Create parameter types string and array
-        $types = "ssssssssiiis"; // 12 base parameters + user_id
-        $params = [
-            $formData['first_name'],
-            $formData['last_name'],
-            $formData['username'],
-            $formData['email'],
-            $formData['phone'],
-            $formData['role'],
-            $formData['status'],
-            $formData['registration_date'],
-            $formData['email_notifications'],
-            $formData['property_alerts'],
-            $formData['newsletter'],
-            $user_id
-        ];
-        
-        // Add password parameter if it's being updated
-        if (!empty($password_param)) {
-            $types .= "s";
-            array_splice($params, -1, 0, [$password_param]); // Insert before user_id
-        }
-        
-        // Add profile image parameter if it's being updated
-        if (!empty($profile_image_param)) {
-            $types .= "s";
-            array_splice($params, -1, 0, [$profile_image_param]); // Insert before user_id
-        }
-        
-        // Bind parameters dynamically
-        $stmt->bind_param($types, ...$params);
+        // The type string should be 'ssssssssssiii' for 13 parameters
+// (10 strings followed by 3 integers)
+$stmt->bind_param("ssssssssssiii", 
+    $formData['first_name'],
+    $formData['last_name'],
+    $formData['username'],
+    $formData['email'],
+    $hashed_password,
+    $formData['phone'],
+    $formData['role'],
+    $formData['status'],
+    $formData['registration_date'],
+    $profile_image,
+    $formData['email_notifications'],
+    $formData['property_alerts'],
+    $formData['newsletter']
+);
         
         if ($stmt->execute()) {
             $success = true;
-            
-            // Refresh user data
-            $stmt->close(); // Close the previous statement before creating a new one
-            $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
-            $stmt->bind_param("i", $user_id);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $userData = $result->fetch_assoc();
-            $stmt->close();
+            // Reset form data
+            $formData = [
+                'first_name' => '',
+                'last_name' => '',
+                'username' => '',
+                'email' => '',
+                'password' => '',
+                'phone' => '',
+                'role' => 'regular',
+                'status' => 'active',
+                'registration_date' => date('Y-m-d'),
+                'profile_image' => '',
+                'email_notifications' => 0,
+                'property_alerts' => 0,
+                'newsletter' => 0
+            ];
         } else {
             $error = "Error: " . $stmt->error;
-            $stmt->close(); // Close the statement if there was an error
         }
         
-        // Removed the redundant $stmt->close() that was causing the error
+        $stmt->close();
     } else {
         $error = implode("<br>", $errors);
     }
@@ -226,7 +209,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($userData)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit User - Real Estate Portal</title>
+    <title>Add User - Real Estate Portal</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -254,9 +237,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($userData)) {
                         </a>
                     </li>
                     <li class="active">
-                        <a href="users.php">
+                        <a href="AddUser.php">
                             <i class="fas fa-users"></i>
-                            <span>Users</span>
+                            <span>Add User</span>
                         </a>
                     </li>
                     <li>
@@ -302,12 +285,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($userData)) {
                 </div>
             </nav>
 
-            <!-- Edit User Content -->
+            <!-- Add User Content -->
             <div class="dashboard-content">
                 <div class="page-header">
-                    <h1>Edit User</h1>
+                    <h1>Add New User</h1>
                     <div class="breadcrumb">
-                        <a href="AdminDashboard.php">Home</a> / <a href="users.php">Users</a> / <span>Edit User</span>
+                        <a href="AdminDashboard.php">Home</a> / <a href="users.php">Users</a> / <span>Add User</span>
                     </div>
                 </div>
 
@@ -317,135 +300,153 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($userData)) {
                 </div>
                 <?php endif; ?>
 
-                <?php if (isset($userData)): ?>
-                <!-- User Edit Form -->
+                <!-- User Add Form -->
                 <div class="content-card">
                     <div class="card-header">
                         <h2>User Information</h2>
                     </div>
                     <div class="card-body">
-                        <form id="editUserForm" class="form-grid" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?id=" . $user_id); ?>" enctype="multipart/form-data">
-                            <!-- User Avatar -->
+                        <form id="addUserForm" class="form-grid" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
+                            <!-- Form fields in the exact sequence of the database -->
+                            
+                            <!-- 1. first_name -->
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="first_name" value="<?php echo htmlspecialchars($formData['first_name']); ?>" required>
+                            </div>
+                            
+                            <!-- 2. last_name -->
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="last_name" value="<?php echo htmlspecialchars($formData['last_name']); ?>" required>
+                            </div>
+                            
+                            <!-- 3. username -->
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($formData['username']); ?>" required>
+                            </div>
+                            
+                            <!-- 4. email -->
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($formData['email']); ?>" required>
+                            </div>
+                            
+                            <!-- 5. password (and confirm password) -->
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" id="confirmPassword" name="confirm_password" required>
+                            </div>
+                            
+                            <!-- 6. phone -->
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($formData['phone']); ?>">
+                            </div>
+                            
+                            <!-- 7. role -->
+                            <div class="form-group">
+                                <label for="role">User Role</label>
+                                <select id="role" name="role" required>
+                                    <option value="admin" <?php echo $formData['role'] == 'admin' ? 'selected' : ''; ?>>Administrator</option>
+                                    <option value="agent" <?php echo $formData['role'] == 'agent' ? 'selected' : ''; ?>>Agent</option>
+                                    <option value="premium" <?php echo $formData['role'] == 'premium' ? 'selected' : ''; ?>>Premium User</option>
+                                    <option value="regular" <?php echo $formData['role'] == 'regular' ? 'selected' : ''; ?>>Regular User</option>
+                                </select>
+                            </div>
+                            
+                            <!-- 8. status -->
+                            <div class="form-group">
+                                <label for="status">Account Status</label>
+                                <select id="status" name="status" required>
+                                    <option value="active" <?php echo $formData['status'] == 'active' ? 'selected' : ''; ?>>Active</option>
+                                    <option value="inactive" <?php echo $formData['status'] == 'inactive' ? 'selected' : ''; ?>>Inactive</option>
+                                    <option value="suspended" <?php echo $formData['status'] == 'suspended' ? 'selected' : ''; ?>>Suspended</option>
+                                </select>
+                            </div>
+                            
+                            <!-- 9. registration_date -->
+                            <div class="form-group">
+                                <label for="registrationDate">Registration Date</label>
+                                <input type="date" id="registrationDate" name="registration_date" value="<?php echo htmlspecialchars($formData['registration_date']); ?>" required>
+                            </div>
+                            
+                            <!-- 10. profile_image -->
                             <div class="form-group full-width">
                                 <div class="user-profile-header">
                                     <div class="user-avatar">
-                                        <img src="<?php echo !empty($userData['profile_image']) ? htmlspecialchars($userData['profile_image']) : 'https://randomuser.me/api/portraits/men/32.jpg'; ?>" alt="<?php echo htmlspecialchars($userData['first_name'] . ' ' . $userData['last_name']); ?>" id="profilePreview">
+                                        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="New User" id="profilePreview">
                                         <div class="avatar-edit">
                                             <i class="fas fa-camera"></i>
                                         </div>
                                     </div>
                                     <div class="user-info-summary">
-                                        <h3><?php echo htmlspecialchars($userData['first_name'] . ' ' . $userData['last_name']); ?></h3>
-                                        <p>Update user profile information</p>
+                                        <h3>Profile Image</h3>
+                                        <p>Upload a profile picture for this user</p>
                                         <div class="file-upload">
                                             <input type="file" id="profileImage" name="profile_image" accept="image/*">
                                             <label for="profileImage" class="file-label">
-                                                <i class="fas fa-upload"></i> Change Profile Picture
+                                                <i class="fas fa-upload"></i> Upload Profile Picture
                                             </label>
                                             <span class="file-name">No file chosen</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Basic Information -->
-                            <div class="form-group">
-                                <label for="firstName">First Name</label>
-                                <input type="text" id="firstName" name="first_name" value="<?php echo htmlspecialchars($userData['first_name']); ?>" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name</label>
-                                <input type="text" id="lastName" name="last_name" value="<?php echo htmlspecialchars($userData['last_name']); ?>" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($userData['username']); ?>" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($userData['email']); ?>" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($userData['phone']); ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="role">User Role</label>
-                                <select id="role" name="role" required>
-                                    <option value="admin" <?php echo $userData['role'] == 'admin' ? 'selected' : ''; ?>>Administrator</option>
-                                    <option value="agent" <?php echo $userData['role'] == 'agent' ? 'selected' : ''; ?>>Agent</option>
-                                    <option value="premium" <?php echo $userData['role'] == 'premium' ? 'selected' : ''; ?>>Premium User</option>
-                                    <option value="regular" <?php echo $userData['role'] == 'regular' ? 'selected' : ''; ?>>Regular User</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="status">Account Status</label>
-                                <select id="status" name="status" required>
-                                    <option value="active" <?php echo $userData['status'] == 'active' ? 'selected' : ''; ?>>Active</option>
-                                    <option value="inactive" <?php echo $userData['status'] == 'inactive' ? 'selected' : ''; ?>>Inactive</option>
-                                    <option value="suspended" <?php echo $userData['status'] == 'suspended' ? 'selected' : ''; ?>>Suspended</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="registrationDate">Registration Date</label>
-                                <input type="date" id="registrationDate" name="registration_date" value="<?php echo htmlspecialchars(date('Y-m-d', strtotime($userData['registration_date']))); ?>" readonly>
-                            </div>
-
-                            <!-- Password Change -->
-                            <div class="form-group full-width">
-                                <h3 style="margin-top: 20px; margin-bottom: 10px; font-size: 1.6rem;">Change Password</h3>
-                                <p style="color: var(--text-muted); font-size: 1.4rem; margin-bottom: 15px;">Leave blank to keep the current password</p>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">New Password</label>
-                                <input type="password" id="password" name="password">
-                            </div>
-                            <div class="form-group">
-                                <label for="confirmPassword">Confirm New Password</label>
-                                <input type="password" id="confirmPassword" name="confirm_password">
-                            </div>
-
-                            <!-- Preferences -->
+                            
+                            <!-- 11-13. Preferences (email_notifications, property_alerts, newsletter) -->
                             <div class="form-group full-width">
                                 <h3 style="margin-top: 20px; margin-bottom: 10px; font-size: 1.6rem;">Preferences</h3>
                             </div>
                             <div class="form-group full-width">
+                                <!-- 11. email_notifications -->
                                 <div class="checkbox-group">
                                     <label class="checkbox-container">
-                                        <input type="checkbox" name="email_notifications" <?php echo $userData['email_notifications'] ? 'checked' : ''; ?>>
+                                        <input type="checkbox" name="email_notifications" <?php echo $formData['email_notifications'] ? 'checked' : ''; ?>>
                                         <span class="checkmark"></span>
                                         Receive email notifications
                                     </label>
                                 </div>
+                                
+                                <!-- 12. property_alerts -->
                                 <div class="checkbox-group">
                                     <label class="checkbox-container">
-                                        <input type="checkbox" name="property_alerts" <?php echo $userData['property_alerts'] ? 'checked' : ''; ?>>
+                                        <input type="checkbox" name="property_alerts" <?php echo $formData['property_alerts'] ? 'checked' : ''; ?>>
                                         <span class="checkmark"></span>
                                         Receive property alerts
                                     </label>
                                 </div>
+                                
+                                <!-- 13. newsletter -->
                                 <div class="checkbox-group">
                                     <label class="checkbox-container">
-                                        <input type="checkbox" name="newsletter" <?php echo $userData['newsletter'] ? 'checked' : ''; ?>>
+                                        <input type="checkbox" name="newsletter" <?php echo $formData['newsletter'] ? 'checked' : ''; ?>>
                                         <span class="checkmark"></span>
                                         Receive newsletter
                                     </label>
                                 </div>
                             </div>
+                            
+                            <!-- Note: created_at and updated_at are handled automatically in the PHP code -->
 
                             <!-- Form Actions -->
                             <div class="form-actions">
-                                <a href="users.php" class="btn-cancel">
+                                <a href="AdminDashboard.php" class="btn-cancel">
                                     <i class="fas fa-times"></i> Cancel
                                 </a>
                                 <button type="submit" class="btn-primary">
-                                    <i class="fas fa-save"></i> Save Changes
+                                    <i class="fas fa-save"></i> Save User
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <?php endif; ?>
             </div>
         </main>
     </div>
@@ -461,7 +462,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($userData)) {
                 <div class="success-icon">
                     <i class="fas fa-check-circle"></i>
                 </div>
-                <p>User has been updated successfully!</p>
+                <p>User has been added successfully!</p>
             </div>
             <div class="modal-footer">
                 <button class="btn-primary" id="successOkBtn">OK</button>
@@ -507,14 +508,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($userData)) {
         }
         
         // Form Validation
-        const editUserForm = document.getElementById('editUserForm');
+        const addUserForm = document.getElementById('addUserForm');
         
-        if (editUserForm) {
-            editUserForm.addEventListener('submit', function(e) {
+        if (addUserForm) {
+            addUserForm.addEventListener('submit', function(e) {
                 const password = document.getElementById('password');
                 const confirmPassword = document.getElementById('confirmPassword');
                 
-                if (password.value !== '' && password.value !== confirmPassword.value) {
+                if (password.value !== confirmPassword.value) {
                     e.preventDefault();
                     alert('Passwords do not match!');
                     return false;
@@ -543,6 +544,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($userData)) {
                     window.location.href = 'AdminDashboard.php';
                 });
             }
+            
+            // Auto redirect after 3 seconds
+            setTimeout(function() {
+                window.location.href = 'AdminDashboard.php';
+            }, 3000);
         }
     });
     </script>
