@@ -1,0 +1,677 @@
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-13 22:37:00
+POST data: Array
+(
+    [csrf_token] => e5ee05af1d69cded964e27391eab327985f8eb18130bdb3f2104ed402ff3ab97
+    [fullName] => ziad 
+    [email] => zxksssiad@gmail.com
+    [password] => q]px,kqxq
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: zxksssiad@gmail.com
+BuyerSignupStrategy: User data: Name: ziad , Email: zxksssiad@gmail.com, Type: buyer, Created: 2025-05-13 22:37:01
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=ziad , email=zxksssiad@gmail.com, userType=buyer, createdAt=2025-05-13 22:37:01
+UserRepository: Executing statement
+UserRepository: Insert successful, new ID: 16
+BuyerSignupStrategy: User saved successfully with ID: 16
+Strategy result: Array
+(
+    [success] => 1
+    [message] => Buyer account created successfully!
+    [user_id] => 16
+)
+
+Signup successful, redirecting to homepage
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-13 22:50:43
+POST data: Array
+(
+    [csrf_token] => 518695b40eecfd293ee93eaf9d649e2cf6b543edbd8c373009b2ebb10f18f95e
+    [fullName] => ziad 
+    [email] => ziahbbd@gmail.com
+    [password] => du4u4848
+    [admin_code] => 
+    [userType] => agent
+)
+
+Getting strategy for user type: agent
+Building user object
+User object built successfully
+Processing signup with strategy
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=ziad , email=ziahbbd@gmail.com, userType=agent, createdAt=2025-05-13 22:50:43
+UserRepository: Executing statement
+UserRepository: Insert successful, new ID: 17
+Strategy result: Array
+(
+    [success] => 1
+    [message] => Agent account created successfully! Your account will be reviewed by our team.
+    [user_id] => 17
+)
+
+Signup successful, redirecting to homepage
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-13 22:55:26
+POST data: Array
+(
+    [csrf_token] => 1c2f77eb49d10e9ba954356132c10c44625593b8c26e7b0ab951fe39de887314
+    [fullName] => ziad 
+    [email] => ziadomar@gmail.com
+    [password] => 123456qwer
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: ziadomar@gmail.com
+BuyerSignupStrategy: User data: Name: ziad , Email: ziadomar@gmail.com, Type: buyer, Created: 2025-05-13 22:55:26
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=ziad , email=ziadomar@gmail.com, userType=buyer, createdAt=2025-05-13 22:55:26
+UserRepository: Executing statement
+UserRepository: Insert successful, new ID: 18
+BuyerSignupStrategy: User saved successfully with ID: 18
+Strategy result: Array
+(
+    [success] => 1
+    [message] => Buyer account created successfully!
+    [user_id] => 18
+)
+
+Signup successful, redirecting to homepageUserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-16 16:48:24
+POST data: Array
+(
+    [csrf_token] => 06303da657c3ac76b0392bfb9385c541c4706c534670fb1d0b6ac809fad85186
+    [fullName] => Yomna Hany Ibrahim
+    [email] => Yomna@gmail.com
+    [password] => Yomnazz123
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: Yomna@gmail.com
+BuyerSignupStrategy: User data: Name: Yomna Hany Ibrahim, Email: Yomna@gmail.com, Type: buyer, Created: 2025-05-16 16:48:24
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=Yomna Hany Ibrahim, email=Yomna@gmail.com, userType=buyer, createdAt=2025-05-16 16:48:24
+UserRepository: Executing statement
+UserRepository: Database error in save(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+UserRepository: Error code: 42S02
+UserRepository: SQL state: 42S02
+UserRepository: Error trace: #0 C:\xampp\htdocs\RealState\App\Model\UserRepository.php(55): PDOStatement->execute()
+#1 C:\xampp\htdocs\RealState\App\Controller\SignupStrategy\BuyerSignupStrategy.php(28): App\Model\UserRepository->save(Object(App\Model\User))
+#2 C:\xampp\htdocs\RealState\App\Controller\SignupController.php(79): App\Controller\SignupStrategy\BuyerSignupStrategy->process(Object(App\Model\User), Array)
+#3 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#4 {main}
+BuyerSignupStrategy: Error creating buyer account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+BuyerSignupStrategy: Error trace: #0 C:\xampp\htdocs\RealState\App\Model\UserRepository.php(55): PDOStatement->execute()
+#1 C:\xampp\htdocs\RealState\App\Controller\SignupStrategy\BuyerSignupStrategy.php(28): App\Model\UserRepository->save(Object(App\Model\User))
+#2 C:\xampp\htdocs\RealState\App\Controller\SignupController.php(79): App\Controller\SignupStrategy\BuyerSignupStrategy->process(Object(App\Model\User), Array)
+#3 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#4 {main}
+Strategy result: Array
+(
+    [success] => 
+    [message] => Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+)
+
+Signup unsuccessful: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+Exception during signup process: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+Exception trace: #0 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#1 {main}
+Signup error: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-16 16:49:08
+POST data: Array
+(
+    [csrf_token] => 9f38aa2a0f08282d5ac8391f5ccc071b89d5895c3a867e0c93edb14b1e3bda00
+    [fullName] => Yomna Hany Ibrahim
+    [email] => Yomna@gmail.com
+    [password] => Yomnazz123
+    [admin_code] => 
+    [userType] => agent
+)
+
+Getting strategy for user type: agent
+Building user object
+User object built successfully
+Processing signup with strategy
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=Yomna Hany Ibrahim, email=Yomna@gmail.com, userType=agent, createdAt=2025-05-16 16:49:08
+UserRepository: Executing statement
+UserRepository: Database error in save(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+UserRepository: Error code: 42S02
+UserRepository: SQL state: 42S02
+UserRepository: Error trace: #0 C:\xampp\htdocs\RealState\App\Model\UserRepository.php(55): PDOStatement->execute()
+#1 C:\xampp\htdocs\RealState\App\Controller\SignupStrategy\AgentSignupStrategy.php(19): App\Model\UserRepository->save(Object(App\Model\User))
+#2 C:\xampp\htdocs\RealState\App\Controller\SignupController.php(79): App\Controller\SignupStrategy\AgentSignupStrategy->process(Object(App\Model\User), Array)
+#3 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#4 {main}
+Strategy result: Array
+(
+    [success] => 
+    [message] => Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+)
+
+Signup unsuccessful: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+Exception during signup process: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+Exception trace: #0 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#1 {main}
+Signup error: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-16 16:51:32
+POST data: Array
+(
+    [csrf_token] => 3876d93c2c8aec417d361e751edd22bb6d637bca6a6f8bd30da81ba6096fd635
+    [fullName] => users
+    [email] => Yomna@gmail.com
+    [password] => Yomnazz123
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: Yomna@gmail.com
+BuyerSignupStrategy: User data: Name: users, Email: Yomna@gmail.com, Type: buyer, Created: 2025-05-16 16:51:32
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=users, email=Yomna@gmail.com, userType=buyer, createdAt=2025-05-16 16:51:32
+UserRepository: Executing statement
+UserRepository: Database error in save(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+UserRepository: Error code: 42S02
+UserRepository: SQL state: 42S02
+UserRepository: Error trace: #0 C:\xampp\htdocs\RealState\App\Model\UserRepository.php(55): PDOStatement->execute()
+#1 C:\xampp\htdocs\RealState\App\Controller\SignupStrategy\BuyerSignupStrategy.php(28): App\Model\UserRepository->save(Object(App\Model\User))
+#2 C:\xampp\htdocs\RealState\App\Controller\SignupController.php(79): App\Controller\SignupStrategy\BuyerSignupStrategy->process(Object(App\Model\User), Array)
+#3 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#4 {main}
+BuyerSignupStrategy: Error creating buyer account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+BuyerSignupStrategy: Error trace: #0 C:\xampp\htdocs\RealState\App\Model\UserRepository.php(55): PDOStatement->execute()
+#1 C:\xampp\htdocs\RealState\App\Controller\SignupStrategy\BuyerSignupStrategy.php(28): App\Model\UserRepository->save(Object(App\Model\User))
+#2 C:\xampp\htdocs\RealState\App\Controller\SignupController.php(79): App\Controller\SignupStrategy\BuyerSignupStrategy->process(Object(App\Model\User), Array)
+#3 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#4 {main}
+Strategy result: Array
+(
+    [success] => 
+    [message] => Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+)
+
+Signup unsuccessful: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+Exception during signup process: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+Exception trace: #0 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#1 {main}
+Signup error: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-16 16:57:23
+POST data: Array
+(
+    [csrf_token] => 0651f6c7d88f2dfb5416ac34fa2845d46431b6f96e0a8c14c9387427f5640442
+    [fullName] => Yomna Hany Ibrahim
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: Yomnazz@gmail.com
+BuyerSignupStrategy: User data: Name: Yomna Hany Ibrahim, Email: Yomnazz@gmail.com, Type: buyer, Created: 2025-05-16 16:57:23
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=Yomna Hany Ibrahim, email=Yomnazz@gmail.com, userType=buyer, createdAt=2025-05-16 16:57:23
+UserRepository: Executing statement
+UserRepository: Database error in save(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+UserRepository: Error code: 42S02
+UserRepository: SQL state: 42S02
+UserRepository: Error trace: #0 C:\xampp\htdocs\RealState\App\Model\UserRepository.php(55): PDOStatement->execute()
+#1 C:\xampp\htdocs\RealState\App\Controller\SignupStrategy\BuyerSignupStrategy.php(28): App\Model\UserRepository->save(Object(App\Model\User))
+#2 C:\xampp\htdocs\RealState\App\Controller\SignupController.php(79): App\Controller\SignupStrategy\BuyerSignupStrategy->process(Object(App\Model\User), Array)
+#3 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#4 {main}
+BuyerSignupStrategy: Error creating buyer account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+BuyerSignupStrategy: Error trace: #0 C:\xampp\htdocs\RealState\App\Model\UserRepository.php(55): PDOStatement->execute()
+#1 C:\xampp\htdocs\RealState\App\Controller\SignupStrategy\BuyerSignupStrategy.php(28): App\Model\UserRepository->save(Object(App\Model\User))
+#2 C:\xampp\htdocs\RealState\App\Controller\SignupController.php(79): App\Controller\SignupStrategy\BuyerSignupStrategy->process(Object(App\Model\User), Array)
+#3 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#4 {main}
+Strategy result: Array
+(
+    [success] => 
+    [message] => Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+)
+
+Signup unsuccessful: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+Exception during signup process: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+Exception trace: #0 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#1 {main}
+Signup error: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-16 16:58:37
+POST data: Array
+(
+    [csrf_token] => 6caf830fa6a485501ef6dc2a34daf83bbcbd9fa46eb0047e6c055ce60a814970
+    [fullName] => Yomna Hany Ibrahim
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: Yomnazz@gmail.com
+BuyerSignupStrategy: User data: Name: Yomna Hany Ibrahim, Email: Yomnazz@gmail.com, Type: buyer, Created: 2025-05-16 16:58:37
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=Yomna Hany Ibrahim, email=Yomnazz@gmail.com, userType=buyer, createdAt=2025-05-16 16:58:37
+UserRepository: Executing statement
+UserRepository: Database error in save(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+UserRepository: Error code: 42S02
+UserRepository: SQL state: 42S02
+UserRepository: Error trace: #0 C:\xampp\htdocs\RealState\App\Model\UserRepository.php(55): PDOStatement->execute()
+#1 C:\xampp\htdocs\RealState\App\Controller\SignupStrategy\BuyerSignupStrategy.php(28): App\Model\UserRepository->save(Object(App\Model\User))
+#2 C:\xampp\htdocs\RealState\App\Controller\SignupController.php(79): App\Controller\SignupStrategy\BuyerSignupStrategy->process(Object(App\Model\User), Array)
+#3 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#4 {main}
+BuyerSignupStrategy: Error creating buyer account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+BuyerSignupStrategy: Error trace: #0 C:\xampp\htdocs\RealState\App\Model\UserRepository.php(55): PDOStatement->execute()
+#1 C:\xampp\htdocs\RealState\App\Controller\SignupStrategy\BuyerSignupStrategy.php(28): App\Model\UserRepository->save(Object(App\Model\User))
+#2 C:\xampp\htdocs\RealState\App\Controller\SignupController.php(79): App\Controller\SignupStrategy\BuyerSignupStrategy->process(Object(App\Model\User), Array)
+#3 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#4 {main}
+Strategy result: Array
+(
+    [success] => 
+    [message] => Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+)
+
+Signup unsuccessful: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+Exception during signup process: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+Exception trace: #0 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#1 {main}
+Signup error: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-16 17:02:03
+POST data: Array
+(
+    [csrf_token] => 04de0554d264dedf9a3f7179c0f88fed8ccd79e278995ec78f8013da784d1f1e
+    [fullName] => Yomna Hany Ibrahim
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: Yomnazz@gmail.com
+BuyerSignupStrategy: User data: Name: Yomna Hany Ibrahim, Email: Yomnazz@gmail.com, Type: buyer, Created: 2025-05-16 17:02:03
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=Yomna Hany Ibrahim, email=Yomnazz@gmail.com, userType=buyer, createdAt=2025-05-16 17:02:03
+UserRepository: Executing statement
+UserRepository: Database error in save(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+UserRepository: Error code: 42S02
+UserRepository: SQL state: 42S02
+UserRepository: Error trace: #0 C:\xampp\htdocs\RealState\App\Model\UserRepository.php(55): PDOStatement->execute()
+#1 C:\xampp\htdocs\RealState\App\Controller\SignupStrategy\BuyerSignupStrategy.php(28): App\Model\UserRepository->save(Object(App\Model\User))
+#2 C:\xampp\htdocs\RealState\App\Controller\SignupController.php(79): App\Controller\SignupStrategy\BuyerSignupStrategy->process(Object(App\Model\User), Array)
+#3 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#4 {main}
+BuyerSignupStrategy: Error creating buyer account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+BuyerSignupStrategy: Error trace: #0 C:\xampp\htdocs\RealState\App\Model\UserRepository.php(55): PDOStatement->execute()
+#1 C:\xampp\htdocs\RealState\App\Controller\SignupStrategy\BuyerSignupStrategy.php(28): App\Model\UserRepository->save(Object(App\Model\User))
+#2 C:\xampp\htdocs\RealState\App\Controller\SignupController.php(79): App\Controller\SignupStrategy\BuyerSignupStrategy->process(Object(App\Model\User), Array)
+#3 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#4 {main}
+Strategy result: Array
+(
+    [success] => 
+    [message] => Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+)
+
+Signup unsuccessful: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+Exception during signup process: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+Exception trace: #0 C:\xampp\htdocs\RealState\index.php(50): App\Controller\SignupController->signup()
+#1 {main}
+Signup error: Error creating account: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'properties.users' doesn't exist
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-16 17:02:45
+POST data: Array
+(
+    [csrf_token] => c464604f6d5b0f871e2f49ecd451251050b16ed5042704be60d051a2ca139817
+    [fullName] => s
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: Yomnazz@gmail.com
+BuyerSignupStrategy: User data: Name: s, Email: Yomnazz@gmail.com, Type: buyer, Created: 2025-05-16 17:02:45
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=s, email=Yomnazz@gmail.com, userType=buyer, createdAt=2025-05-16 17:02:45
+UserRepository: Executing statement
+UserRepository: Insert successful, new ID: 1
+BuyerSignupStrategy: User saved successfully with ID: 1
+Strategy result: Array
+(
+    [success] => 1
+    [message] => Buyer account created successfully!
+    [user_id] => 1
+)
+
+Signup successful, redirecting to homepage
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-16 17:54:18
+POST data: Array
+(
+    [csrf_token] => 1a87d265984e9d5e266c894ee32473ada3e3a6217761767dab99bd8521a05e05
+    [fullName] => users
+    [email] => Yomnazznnn@gmail.com
+    [password] => Yomnazz123
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: Yomnazznnn@gmail.com
+BuyerSignupStrategy: User data: Name: users, Email: Yomnazznnn@gmail.com, Type: buyer, Created: 2025-05-16 17:54:18
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=users, email=Yomnazznnn@gmail.com, userType=buyer, createdAt=2025-05-16 17:54:18
+UserRepository: Executing statement
+UserRepository: Insert successful, new ID: 2
+BuyerSignupStrategy: User saved successfully with ID: 2
+Strategy result: Array
+(
+    [success] => 1
+    [message] => Buyer account created successfully!
+    [user_id] => 2
+)
+
+Signup successful, redirecting to homepage
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-16 19:20:14
+POST data: Array
+(
+    [csrf_token] => 1485c1eda2e8ffa3cec2b8b9b5baa7c49b4a66c6a2035f9a9ff510dfc2edeb22
+    [fullName] => Yomna Hany Ibrahim
+    [email] => Yomnazznnn@gmail.com
+    [password] => Yomnazz123
+    [admin_code] => 
+    [userType] => agent
+)
+
+Getting strategy for user type: agent
+Building user object
+User object built successfully
+Processing signup with strategy
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=Yomna Hany Ibrahim, email=Yomnazznnn@gmail.com, userType=agent, createdAt=2025-05-16 19:20:14
+UserRepository: Executing statement
+UserRepository: Duplicate email detected: Yomnazznnn@gmail.com
+Strategy result: Array
+(
+    [success] => 
+    [message] => This email address is already registered. Please use a different email address.
+)
+
+Signup unsuccessful: This email address is already registered. Please use a different email address.
+Exception during signup process: This email address is already registered. Please use a different email address.
+Exception trace: #0 C:\xampp\htdocs\RealState\index.php(57): App\Controller\SignupController->signup()
+#1 {main}
+Signup error: This email address is already registered. Please use a different email address.
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-16 19:20:39
+POST data: Array
+(
+    [csrf_token] => d7f238bfeca1267f294121286282b33eba88bc3cf55fbce19e03d24ce1fbd5fa
+    [fullName] => userssssss
+    [email] => yomnammm@gmail.com
+    [password] => Yomnazz123
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: yomnammm@gmail.com
+BuyerSignupStrategy: User data: Name: userssssss, Email: yomnammm@gmail.com, Type: buyer, Created: 2025-05-16 19:20:39
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=userssssss, email=yomnammm@gmail.com, userType=buyer, createdAt=2025-05-16 19:20:39
+UserRepository: Executing statement
+UserRepository: Insert successful, new ID: 4
+BuyerSignupStrategy: User saved successfully with ID: 4
+Strategy result: Array
+(
+    [success] => 1
+    [message] => Buyer account created successfully!
+    [user_id] => 4
+)
+
+Signup successful, redirecting to homepage
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-16 19:23:48
+POST data: Array
+(
+    [csrf_token] => de9e791a89030aa0545da81354d7196c1c990ff2dfd00ef18a9db71abc5a758c
+    [fullName] => Yomna Hany Ibrahimmmm
+    [email] => Yomnazzkkkkk@gmail.com
+    [password] => Yomnazz123
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: Yomnazzkkkkk@gmail.com
+BuyerSignupStrategy: User data: Name: Yomna Hany Ibrahimmmm, Email: Yomnazzkkkkk@gmail.com, Type: buyer, Created: 2025-05-16 19:23:48
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=Yomna Hany Ibrahimmmm, email=Yomnazzkkkkk@gmail.com, userType=buyer, createdAt=2025-05-16 19:23:48
+UserRepository: Executing statement
+UserRepository: Insert successful, new ID: 5
+BuyerSignupStrategy: User saved successfully with ID: 5
+Strategy result: Array
+(
+    [success] => 1
+    [message] => Buyer account created successfully!
+    [user_id] => 5
+)
+
+Signup successful, redirecting to homepage
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-16 19:55:13
+POST data: Array
+(
+    [csrf_token] => 6004214c4f461a63d94591f43dc4d0936c0815a7e272482d33790bd42edc06dc
+    [fullName] => YOMNA
+    [email] => YomnazzSSSS@gmail.com
+    [password] => Yomnazz123
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: YomnazzSSSS@gmail.com
+BuyerSignupStrategy: User data: Name: YOMNA, Email: YomnazzSSSS@gmail.com, Type: buyer, Created: 2025-05-16 19:55:13
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=YOMNA, email=YomnazzSSSS@gmail.com, userType=buyer, createdAt=2025-05-16 19:55:13
+UserRepository: Executing statement
+UserRepository: Insert successful, new ID: 6
+BuyerSignupStrategy: User saved successfully with ID: 6
+Strategy result: Array
+(
+    [success] => 1
+    [message] => Buyer account created successfully!
+    [user_id] => 6
+)
+
+Signup successful, redirecting to homepage
+UserRepository: Constructed with database connection
+UserRepository: Constructed with database connection
+SignupController::signup() called - 2025-05-16 19:56:01
+POST data: Array
+(
+    [csrf_token] => 006ac87f18b7da2b58a659f9d2bc7ef54b2c2654c904aa2d33417753458985a2
+    [fullName] => Yomna
+    [email] => Yomnazzwww@gmail.com
+    [password] => Yomnazz123
+    [admin_code] => 
+    [userType] => buyer
+)
+
+Getting strategy for user type: buyer
+Building user object
+User object built successfully
+Processing signup with strategy
+BuyerSignupStrategy: Attempting to save buyer: Yomnazzwww@gmail.com
+BuyerSignupStrategy: User data: Name: Yomna, Email: Yomnazzwww@gmail.com, Type: buyer, Created: 2025-05-16 19:56:01
+UserRepository: Preparing to insert user into database
+UserRepository: SQL Query: 
+                INSERT INTO users (full_name, email, password, user_type, admin_code, created_at) 
+                VALUES (:fullName, :email, :password, :userType, :adminCode, :createdAt)
+            
+UserRepository: Binding values: fullName=Yomna, email=Yomnazzwww@gmail.com, userType=buyer, createdAt=2025-05-16 19:56:01
+UserRepository: Executing statement
+UserRepository: Insert successful, new ID: 7
+BuyerSignupStrategy: User saved successfully with ID: 7
+Strategy result: Array
+(
+    [success] => 1
+    [message] => Buyer account created successfully!
+    [user_id] => 7
+)
+
+Signup successful, redirecting to homepage
+UserRepository: Constructed with database connection

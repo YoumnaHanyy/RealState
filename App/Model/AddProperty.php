@@ -1,9 +1,9 @@
 <?php
-
+namespace App\Model;
 // Include the database connection file (assuming it returns a PDO connection)
 // require_once __DIR__ . '/../Config/db.php'; // Included in the Controller, but can be here if the Model is used independently
 
-class Property {
+class AddProperty {
     private $conn;
 
     public function __construct($db_connection) {

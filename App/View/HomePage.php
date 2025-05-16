@@ -10,13 +10,19 @@
 </head>
 <body>
   <header class="navbar">
-    <div class="logo">HOUSOFT</div>
+    <a  href="http://localhost/REALSTATE/index.php?page=home" class="logo">HOUSOFT</a>
     <nav>
      <a href="#">About Us</a>
     <a href="/REALSTATE/index.php?page=properties">Properties</a>
     <a href="#">Services</a>
     <a href="#">Blog →</a>
-    <a href="/REALSTATE/App/View/AddProperty.php">Add Property</a>  <a href="#" class="sign-up-btn">Sign Up</a>
+    <a href="/REALSTATE/App/View/AddProperty.php">Add Property</a> 
+     <?php if (isset($_SESSION['user_name'])): ?>
+  <span style="color:white;">Welcome, <?= htmlspecialchars($_SESSION['user_name']) ?>!</span>
+  <a href="index.php?page=login&action=logout" class="sign-up-btn">Logout</a>
+<?php else: ?>
+  <a href="index.php?page=signup" class="sign-up-btn">Sign Up</a>
+<?php endif; ?>
     </nav>
   </header>
   

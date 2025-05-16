@@ -1,15 +1,23 @@
 <?php
+namespace App\Controller;
+use App\Config\Database;
 
-require_once __DIR__ . '/../Config/db.php';
+require_once __DIR__ . '/../Config/Database.php';
 require_once __DIR__ . '/../Model/Property.php';
 
 class HomeController {
+      public function __construct() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
+
     public function index() {
         include_once __DIR__ . '/../View/HomePage.php';
     }
 
     public function properties() {
-        global $conn;
+         $conn = Database::getInstance()->getConnection(); 
         $filters = [
             'location'   => $_GET['location'] ?? null,
             'min_price'  => $_GET['min_price'] ?? null,
@@ -41,6 +49,6 @@ class HomeController {
 
         $stmt = $conn->prepare($sql);
         $stmt->execute($params);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

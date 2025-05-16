@@ -40,11 +40,19 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%; /* For easy rem calculations - 1rem = 10px */
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: var(--bg-dark);
-  
   color: var(--text-dark);
+  background-color: #121212;
+  font-family: 'Poppins', 'Arial', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* Navbar Styles */
@@ -52,18 +60,25 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem var(--container-padding);
-  background-color: var(--bg-dark);
+  padding: 2rem var(--container-padding);
+  background-color: #121212;
   position: fixed;
   width: 100%;
-  z-index: 10;
+  z-index: 1000;
+  backdrop-filter: blur(var(--blur-strength));
+  -webkit-backdrop-filter: blur(var(--blur-strength));
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-medium);
 }
 
+.navbar.scrolled {
+  padding: 1.5rem var(--container-padding);
+  box-shadow: var(--shadow-md);
+}
+
 .logo {
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   color: white;
   position: relative;
   text-decoration: none;
@@ -71,46 +86,118 @@ body {
   align-items: center;
 }
 
+.logo::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 4px;
+  background-color: var(--primary-color);
+  bottom: -8px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-medium);
+}
+
+.logo:hover::before {
+  transform: scaleX(1);
+}
+
 nav {
   display: flex;
-  gap: 2rem;
+  gap: 3.5rem;
   align-items: center;
 }
 
 nav a {
   text-decoration: none;
-  color: var(--text-dark);
-  font-size: 0.95rem;
+  color: white;
+  font-size: 1.5rem;
   font-weight: 500;
   position: relative;
   transition: color var(--transition-fast);
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  bottom: -4px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--transition-fast);
 }
 
 nav a:hover {
   color: var(--primary-color);
 }
 
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-dark);
+  margin: 5px 0;
+  transition: all var(--transition-fast);
+}
+
 .sign-up-btn {
   background-color: var(--primary-color);
   color: var(--text-light);
-  padding: 0.6rem 1.2rem;
+  padding: 1.2rem 2.4rem;
   border-radius: var(--border-radius-sm);
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1.5rem;
   position: relative;
   overflow: hidden;
   z-index: 1;
   transition: all var(--transition-medium);
-  box-shadow: 0 4px 12px rgba(255, 77, 77, 0.3);
+  box-shadow: 0 4px 12px rgba(189, 140, 76, 0.3);
+}
+
+.sign-up-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-dark);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--transition-medium);
 }
 
 .sign-up-btn:hover {
-  background-color: var(--primary-dark);
-  box-shadow: 0 6px 16px rgba(255, 77, 77, 0.5);
+  box-shadow: 0 6px 16px rgba(189, 140, 76, 0.5);
   transform: translateY(-2px);
 }
 
+.sign-up-btn:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.sign-up-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(189, 140, 76, 0.3);
+}
 /* Main Content */
 .headdd {
   padding-top: 2rem;
@@ -124,8 +211,9 @@ nav a:hover {
 
 /* Search Form Styles - Completely restyled to match image */
 .search-form {
+  margin-top:5em;
   display: flex;
-  background-color: var(--bg-card);
+  background-color:rgb(22, 22, 22);
   border-radius: var(--border-radius-md);
   box-shadow: var(--shadow-sm);
   margin-bottom: 2rem;
@@ -145,7 +233,7 @@ nav a:hover {
 
 .search-form label {
   display: block;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--text-muted);
   margin-bottom: 0.25rem;
@@ -157,7 +245,7 @@ nav a:hover {
   padding: 0.5rem 1rem 0.75rem;
   border: none;
   background: transparent;
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   color: var(--text-dark);
 }
 
@@ -181,7 +269,7 @@ nav a:hover {
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
-  font-size: 0.85rem;
+  font-size: 1.5rem;
   height: 100%;
 }
 
@@ -399,19 +487,21 @@ nav a:hover {
     </style>
 </head>
 <body>
-    <section>
-      <header class="navbar">
-    <div class="logo">HOUSOFT</div>
+     <header class="navbar">
+    <a  href="http://localhost/REALSTATE/index.php?page=home" class="logo">HOUSOFT</a>
     <nav>
-      <a href="#">About Us</a>
-      <a href="Poperties.php">Properties</a>
-      <a href="#">Services</a>
-      <a href="#">Blog →</a>
-      <a href="#" class="sign-up-btn">Sign Up</a>
-
+     <a href="#">About Us</a>
+    <a href="/REALSTATE/index.php?page=properties">Properties</a>
+    <a href="#">Services</a>
+    <a href="#">Blog →</a>
+    <?php if (isset($_SESSION['user_name'])): ?>
+  <span style="color:white;">Welcome, <?= htmlspecialchars($_SESSION['user_name']) ?>!</span>
+  <a href="index.php?page=login&action=logout" class="sign-up-btn">Logout</a>
+<?php else: ?>
+  <a href="index.php?page=signup" class="sign-up-btn">Sign Up</a>
+<?php endif; ?>
     </nav>
   </header>
-    </section>
     <section class="headdd">
     <div class="container">
         <form class="search-form" method="get" action="index.php">
@@ -454,7 +544,9 @@ nav a:hover {
                     
                     <div class="card-footer">
                         <span class="price">$<?= htmlspecialchars($property['price']) ?></span>
-                        <a href="#" class="btn">View Details</a>
+                      <a href="index.php?page=details&id=<?= $property['id'] ?>" class="btn">View Details</a>
+
+
                     </div>
                 </div>
             <?php endforeach; ?>
