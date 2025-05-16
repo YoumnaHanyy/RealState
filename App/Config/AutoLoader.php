@@ -4,7 +4,7 @@ class Autoloader {
     public static function register() {
         spl_autoload_register(function ($class) {
             $prefix = 'App\\';
-            $base_dir = __DIR__ . '/../../';
+            $base_dir = dirname(__DIR__) . '/';
             
             // Check if the class uses the namespace prefix
             $len = strlen($prefix);

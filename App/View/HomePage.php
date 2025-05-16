@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Housing</title>
-  <link rel="stylesheet" href="/REALSTATE/Public/css/HomePagee.css">
+  <link rel="stylesheet" href="/REALSTATE/Public/css/HomePageee.css">
 
 </head>
 <body>
@@ -16,7 +16,9 @@
     <a href="/REALSTATE/index.php?page=properties">Properties</a>
     <a href="#">Services</a>
     <a href="#">Blog →</a>
-    <a href="/REALSTATE/App/View/AddProperty.php">Add Property</a> 
+   <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'agent'): ?>
+  <a href="/REALSTATE/App/View/AddProperty.php">Add Property</a> 
+<?php endif; ?>
      <?php if (isset($_SESSION['user_name'])): ?>
   <span style="color:white;">Welcome, <?= htmlspecialchars($_SESSION['user_name']) ?>!</span>
   <a href="index.php?page=login&action=logout" class="sign-up-btn">Logout</a>

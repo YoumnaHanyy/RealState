@@ -81,6 +81,7 @@ class SignupController {
                 
                 if ($result['success']) {
                     // Store user data in session
+                    $_SESSION['user_name'] = $user->getFullName();
                     $_SESSION['user_id'] = $result['user_id'] ?? null;
                     $_SESSION['user_role'] = $user->getUserType();
                     $_SESSION['logged_in'] = true;
