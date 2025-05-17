@@ -5,27 +5,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Housing</title>
-  <link rel="stylesheet" href="/REALSTATE/Public/css/HomePageee.css">
+  <link rel="stylesheet" href="/REALSTATE/Public/css/HomePageeee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 <body>
-  <header class="navbar">
-    <a  href="http://localhost/REALSTATE/index.php?page=home" class="logo">HOUSOFT</a>
+ <header class="navbar">
+    <a href="http://localhost/REALSTATE/index.php?page=home" class="logo">HOUSOFT</a>
     <nav>
-     <a href="#">About Us</a>
-    <a href="/REALSTATE/index.php?page=properties">Properties</a>
-    <a href="#">Services</a>
-    <a href="#">Blog →</a>
-   <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'agent'): ?>
-  <a href="/REALSTATE/App/View/AddProperty.php">Add Property</a> 
-<?php endif; ?>
-     <?php if (isset($_SESSION['user_name'])): ?>
-  <span style="color:white;">Welcome, <?= htmlspecialchars($_SESSION['user_name']) ?>!</span>
-  <a href="index.php?page=login&action=logout" class="sign-up-btn">Logout</a>
-<?php else: ?>
-  <a href="index.php?page=signup" class="sign-up-btn">Sign Up</a>
-<?php endif; ?>
+      
+      <a href="/REALSTATE/index.php?page=properties"><i class="fas fa-building"></i> Properties</a>
+      <a href="#"><i class="fas fa-concierge-bell"></i> Services</a>
+      <a href="#"><i class="fas fa-blog"></i> Blog →</a>
+      <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'agent'): ?>
+        <a href="/REALSTATE/index.php?page=agentMessages"><i class="fas fa-envelope"></i> Messages</a>
+      <?php endif; ?>
+      <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'agent'): ?>
+        <a href="/REALSTATE/App/View/AddProperty.php"><i class="fas fa-plus-circle"></i> Add Property</a> 
+      <?php endif; ?>
+      <?php if (isset($_SESSION['user_name'])): ?>
+        <span><i class="fas fa-user-circle"></i> Welcome, <?= htmlspecialchars($_SESSION['user_name']) ?>!</span>
+        <a href="index.php?page=login&action=logout" class="sign-up-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      <?php else: ?>
+        <a href="index.php?page=signup" class="sign-up-btn"><i class="fas fa-user-plus"></i> Sign Up</a>
+      <?php endif; ?>
     </nav>
+    <button class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
   
   <section class="hero">

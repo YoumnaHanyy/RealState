@@ -228,3 +228,157 @@ User found, verifying password
 Password verified successfully
 Authentication successful for user: Asmaa (ID: 12)
 Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-17 19:24:43
+POST data: Array
+(
+    [csrf_token] => e1e3f749d80162f973a617f1002a1d09d102d38ab6ddd068f6c3a2c6b3d3bddb
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: s (ID: 1)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-17 19:29:01
+POST data: Array
+(
+    [csrf_token] => 6a09df0c25ebff8e159ecb492f0b9ce114ced4c59b7cd894698c2658fdf11305
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: s (ID: 1)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-17 20:12:06
+POST data: Array
+(
+    [csrf_token] => a1bf56b53f02f4bbf45e3fa86255a9f2742f0eb8b892bd90b5f40a33bb590800
+    [email] => menna@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: menna@gmail.com
+AuthModel::verifyLogin called for email: menna@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: menna (ID: 10)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-17 20:21:08
+POST data: Array
+(
+    [csrf_token] => 2cbfd78d1c25454b88b57e1917b4b497fc93f3bf975e737c2e9a18add18a9b28
+    [email] => menna@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: menna@gmail.com
+AuthModel::verifyLogin called for email: menna@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: menna (ID: 10)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-17 20:21:21
+POST data: Array
+(
+    [csrf_token] => 0370fdfdc1e392dba795ef2108717da06a9a7bfc354c4f1e6395cc2da523461a
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: s (ID: 1)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-17 20:21:52
+POST data: Array
+(
+    [csrf_token] => 91c6ee6f22721c4ac19c5093ab6c122b84eb5b81ccb05ae0528b193314ec21d1
+    [email] => menna@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: menna@gmail.com
+AuthModel::verifyLogin called for email: menna@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: menna (ID: 10)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-17 20:22:50
+POST data: Array
+(
+    [csrf_token] => 3b2545f82a039a4f18a5bca3dd22491fec20a3724da236ea9b878aaca517961b
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: s (ID: 1)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-17 20:23:27
+POST data: Array
+(
+    [csrf_token] => e831034d592e40324d3e5bb3218e8f299d3e65c1d3eee9d3942d85cba8e02241
+    [email] => menna@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: menna@gmail.com
+AuthModel::verifyLogin called for email: menna@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: menna (ID: 10)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-17 21:30:16
+POST data: Array
+(
+    [csrf_token] => e2152df39da112a0bf47ed764638103e372b116ac839b4905187d6a49a4d069a
+    [email] => menna@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: menna@gmail.com
+AuthModel::verifyLogin called for email: menna@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: menna (ID: 10)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-17 21:31:12
+POST data: Array
+(
+    [csrf_token] => 839f225f2617eab3895154f3c92a78b4d5f8c48821b85bb49545b862ec762745
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: s (ID: 1)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-17 21:32:21
+POST data: Array
+(
+    [csrf_token] => 3246fab9443d3e09ebf3facde4a5c3450269356903bda3e74f6dabb18b95dc56
+    [email] => menna@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: menna@gmail.com
+AuthModel::verifyLogin called for email: menna@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: menna (ID: 10)
+Session variables set. Redirecting to homepage.

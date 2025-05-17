@@ -18,6 +18,7 @@ require_once __DIR__ . '/App/Controller/HomeController.php';
 require_once __DIR__ . '/App/Controller/SignupController.php';
 require_once __DIR__ . '/App/Controller/LoginController.php';
 
+
 // Require signup strategy classes
 require_once __DIR__ . '/App/Controller/SignupStrategy/SignupStrategyInterface.php';
 require_once __DIR__ . '/App/Controller/SignupStrategy/SignupStrategyFactory.php';
@@ -34,6 +35,9 @@ if (session_status() === PHP_SESSION_NONE) {
 use App\Controller\HomeController;
 use App\Controller\SignupController;
 use App\Controller\LoginController;
+use App\Controller\ScheduleTourController;
+use App\Controller\AgentMessagesController;
+
 
 // Routing logic
 $page = $_GET['page'] ?? 'home';
@@ -76,10 +80,19 @@ switch ($page) {
         break;
 
 
-        case 'details':
+    case 'details':
     include 'App/View/Details.php';
     break;
         
+    case 'scheduleTour':
+    $controller = new ScheduleTourController();
+    $controller->index();
+    break;
+
+    case 'agentMessages':
+    $controller = new AgentMessagesController();
+    $controller->index();
+    break;
 
     default:
         echo "404 - Page not found";

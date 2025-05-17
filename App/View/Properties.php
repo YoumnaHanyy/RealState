@@ -8,31 +8,82 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
 
-/* Updated CSS to match reference image */
 :root {
-  /* Color variables */
+  /* Color system */
   --primary-color: #bd8c4c;
-  --primary-light: #d9b078;
+  --primary-light: #e6c18a;
+  --primary-lighter: #f0dfc0;
   --primary-dark: #96703c;
-  --text-dark: #333;
-  --text-light: #fff;
-  --text-muted: #666;
-  --bg-light: #fff;
+  --primary-darker: #6e512c;
+  
+  /* Text colors */
+  --text-dark: #2a2a2a;
+  --text-medium: #545454;
+  --text-light: #ffffff;
+  --text-muted: #888888;
+  
+  /* Background colors */
   --bg-dark: #121212;
+  --bg-medium: #1e1e1e;
+  --bg-light: #ffffff;
+  --bg-lighter: #f8f8f8;
+  
+  /* Accent colors */
+  --accent-blue: #3a7bd5;
+  --accent-red: #d53a3a;
+  --accent-green: #3ad55f;
+  
+  /* Shadow system */
   --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.12);
-  --transition-fast: 0.2s ease;
-  --transition-medium: 0.3s ease;
-  --transition-slow: 0.5s ease;
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.2);
+  
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Border radius */
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 16px;
+  --border-radius-xl: 24px;
+  --border-radius-circle: 50%;
+  
+  /* Layout */
   --container-padding: 5%;
   --container-max-width: 1440px;
+  --section-spacing: 10rem;
+  --element-spacing: 2rem;
+  
+  /* Effects */
   --blur-strength: 10px;
+  --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  --gradient-dark: linear-gradient(135deg, var(--bg-medium) 0%, var(--bg-dark) 100%);
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgba(189, 140, 76, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(189, 140, 76, 0.8); }
+  100% { box-shadow: 0 0 5px rgba(189, 140, 76, 0.5); }
+}
 
 * {
   margin: 0;
@@ -46,13 +97,35 @@ html {
 }
 
 body {
-  color: var(--text-dark);
-  background-color: #121212;
+  color: var(--text-light);
+  background: var(--gradient-dark);
   font-family: 'Poppins', 'Arial', sans-serif;
   font-size: 1.6rem;
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://api.placeholder.com/400/320') center/cover no-repeat;
+  opacity: 0.03;
+  z-index: -1;
+}
+
+.container {
+  width: 90%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 2rem 0;
 }
 
 /* Navbar Styles */
@@ -61,29 +134,34 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 2rem var(--container-padding);
-  background-color: #121212;
-  position: relative;
+  background-color: rgba(18, 18, 18, 0.95);
+  position: sticky;
+  top: 0;
   width: 100%;
   z-index: 1000;
   backdrop-filter: blur(var(--blur-strength));
   -webkit-backdrop-filter: blur(var(--blur-strength));
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   transition: all var(--transition-medium);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .navbar.scrolled {
   padding: 1.5rem var(--container-padding);
-  box-shadow: var(--shadow-md);
+  background-color: rgba(18, 18, 18, 0.98);
+  box-shadow: var(--shadow-lg);
 }
 
 .logo {
   font-weight: 700;
-  font-size: 2.2rem;
-  color: white;
+  font-size: 2.4rem;
+  color: var(--text-light);
   position: relative;
   text-decoration: none;
   display: flex;
   align-items: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .logo::before {
@@ -91,16 +169,28 @@ body {
   position: absolute;
   width: 50%;
   height: 4px;
-  background-color: var(--primary-color);
+  background: var(--gradient-primary);
   bottom: -8px;
   left: 0;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition-medium);
+  border-radius: var(--border-radius-sm);
 }
 
 .logo:hover::before {
   transform: scaleX(1);
+}
+
+.logo::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius-circle);
+  margin-left: 5px;
+  animation: pulse var(--transition-slow) infinite;
 }
 
 nav {
@@ -111,11 +201,12 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: white;
+  color: var(--text-light);
   font-size: 1.5rem;
   font-weight: 500;
   position: relative;
   transition: color var(--transition-fast);
+  padding: 0.5rem 0;
 }
 
 nav a::after {
@@ -123,20 +214,29 @@ nav a::after {
   position: absolute;
   width: 100%;
   height: 2px;
-  background-color: var(--primary-color);
+  background: var(--gradient-primary);
   bottom: -4px;
   left: 0;
   transform: scaleX(0);
   transform-origin: center;
   transition: transform var(--transition-fast);
+  border-radius: var(--border-radius-sm);
 }
 
 nav a:hover {
-  color: var(--primary-color);
+  color: var(--primary-light);
 }
 
 nav a:hover::after {
   transform: scaleX(1);
+}
+
+nav span {
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .hamburger {
@@ -150,16 +250,16 @@ nav a:hover::after {
   display: block;
   width: 25px;
   height: 3px;
-  background-color: var(--text-dark);
+  background-color: var(--text-light);
   margin: 5px 0;
   transition: all var(--transition-fast);
 }
 
 .sign-up-btn {
-  background-color: var(--primary-color);
+  background: var(--gradient-primary);
   color: var(--text-light);
   padding: 1.2rem 2.4rem;
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--border-radius-md);
   text-decoration: none;
   font-weight: 600;
   font-size: 1.5rem;
@@ -168,6 +268,9 @@ nav a:hover::after {
   z-index: 1;
   transition: all var(--transition-medium);
   box-shadow: 0 4px 12px rgba(189, 140, 76, 0.3);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .sign-up-btn::before {
@@ -197,27 +300,6 @@ nav a:hover::after {
 .sign-up-btn:active {
   transform: translateY(0);
   box-shadow: 0 4px 8px rgba(189, 140, 76, 0.3);
-}
-/* Main Content */
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--light-bg);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
-  border-radius: 10px;
-  transition: var(--transition-fast);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
 }
 
 /* Header Section */
@@ -935,20 +1017,31 @@ img[loading="lazy"].loaded {
     </style>
 </head>
 <body>
-     <header class="navbar">
-    <a  href="http://localhost/REALSTATE/index.php?page=home" class="logo">HOUSOFT</a>
+  <header class="navbar">
+    <a href="http://localhost/REALSTATE/index.php?page=home" class="logo">HOUSOFT</a>
     <nav>
-     <a href="#">About Us</a>
-    <a href="/REALSTATE/index.php?page=properties">Properties</a>
-    <a href="#">Services</a>
-    <a href="#">Blog →</a>
-    <?php if (isset($_SESSION['user_name'])): ?>
-  <span style="color:white;">Welcome, <?= htmlspecialchars($_SESSION['user_name']) ?>!</span>
-  <a href="index.php?page=login&action=logout" class="sign-up-btn">Logout</a>
-<?php else: ?>
-  <a href="index.php?page=signup" class="sign-up-btn">Sign Up</a>
-<?php endif; ?>
+      
+      <a href="/REALSTATE/index.php?page=properties"><i class="fas fa-building"></i> Properties</a>
+      <a href="#"><i class="fas fa-concierge-bell"></i> Services</a>
+      <a href="#"><i class="fas fa-blog"></i> Blog →</a>
+      <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'agent'): ?>
+        <a href="/REALSTATE/index.php?page=agentMessages"><i class="fas fa-envelope"></i> Messages</a>
+      <?php endif; ?>
+      <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'agent'): ?>
+        <a href="/REALSTATE/App/View/AddProperty.php"><i class="fas fa-plus-circle"></i> Add Property</a> 
+      <?php endif; ?>
+      <?php if (isset($_SESSION['user_name'])): ?>
+        <span><i class="fas fa-user-circle"></i> Welcome, <?= htmlspecialchars($_SESSION['user_name']) ?>!</span>
+        <a href="index.php?page=login&action=logout" class="sign-up-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      <?php else: ?>
+        <a href="index.php?page=signup" class="sign-up-btn"><i class="fas fa-user-plus"></i> Sign Up</a>
+      <?php endif; ?>
     </nav>
+    <button class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
     <section class="headdd">
     <div class="container">
