@@ -1,0 +1,546 @@
+:root {
+  /* Color system */
+  --primary-color: #bd8c4c;
+  --primary-light: #e6c18a;
+  --primary-lighter: #f0dfc0;
+  --primary-dark: #96703c;
+  --primary-darker: #6e512c;
+  
+  /* Text colors */
+  --text-dark: #2a2a2a;
+  --text-medium: #545454;
+  --text-light: #ffffff;
+  --text-muted: #888888;
+  
+  /* Background colors */
+  --bg-dark: #121212;
+  --bg-medium: #1e1e1e;
+  --bg-light: #ffffff;
+  --bg-lighter: #f8f8f8;
+  
+  /* Accent colors */
+  --accent-blue: #3a7bd5;
+  --accent-red: #d53a3a;
+  --accent-green: #3ad55f;
+  
+  /* Shadow system */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.2);
+  
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Border radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 24px;
+  --border-radius-circle: 50%;
+  
+  /* Layout */
+  --container-padding: 5%;
+  --container-max-width: 1440px;
+  --section-spacing: 10rem;
+  --element-spacing: 2rem;
+  
+  /* Effects */
+  --blur-strength: 10px;
+  --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  --gradient-dark: linear-gradient(135deg, var(--bg-medium) 0%, var(--bg-dark) 100%);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgba(189, 140, 76, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(189, 140, 76, 0.8); }
+  100% { box-shadow: 0 0 5px rgba(189, 140, 76, 0.5); }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; /* For easy rem calculations - 1rem = 10px */
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--text-light);
+  background: var(--gradient-dark);
+  font-family: 'Poppins', 'Arial', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://api.placeholder.com/400/320') center/cover no-repeat;
+  opacity: 0.03;
+  z-index: -1;
+}
+
+.container {
+  width: 90%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem var(--container-padding);
+  background-color: rgba(18, 18, 18, 0.95);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(var(--blur-strength));
+  -webkit-backdrop-filter: blur(var(--blur-strength));
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-medium);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar.scrolled {
+  padding: 1.5rem var(--container-padding);
+  background-color: rgba(18, 18, 18, 0.98);
+  box-shadow: var(--shadow-lg);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 2.4rem;
+  color: var(--text-light);
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.logo::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 4px;
+  background: var(--gradient-primary);
+  bottom: -8px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-medium);
+  border-radius: var(--border-radius-sm);
+}
+
+.logo:hover::before {
+  transform: scaleX(1);
+}
+
+.logo::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius-circle);
+  margin-left: 5px;
+  animation: pulse var(--transition-slow) infinite;
+}
+
+nav {
+  display: flex;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  font-weight: 500;
+  position: relative;
+  transition: color var(--transition-fast);
+  padding: 0.5rem 0;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient-primary);
+  bottom: -4px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--transition-fast);
+  border-radius: var(--border-radius-sm);
+}
+
+nav a:hover {
+  color: var(--primary-light);
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+nav span {
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-light);
+  margin: 5px 0;
+  transition: all var(--transition-fast);
+}
+
+.sign-up-btn {
+  background: var(--gradient-primary);
+  color: var(--text-light);
+  padding: 1.2rem 2.4rem;
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all var(--transition-medium);
+  box-shadow: 0 4px 12px rgba(189, 140, 76, 0.3);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sign-up-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-dark);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--transition-medium);
+}
+
+.sign-up-btn:hover {
+  box-shadow: 0 6px 16px rgba(189, 140, 76, 0.5);
+  transform: translateY(-2px);
+}
+
+.sign-up-btn:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.sign-up-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(189, 140, 76, 0.3);
+}
+
+
+
+
+/* User Avatar Styling (existing) */
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: #ffcc00;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #333;
+    box-shadow: 0 0 0 3px #0d0d0d;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Main Profile Title (existing) */
+h1 {
+    color: #ffcc00;
+    font-size: 2.2em;
+    margin: 0;
+    padding-bottom: 0; /* Remove padding as separator is on parent */
+    position: relative;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Allow title to take available space */
+}
+
+/* Contact Icon Styling (existing) */
+.contact-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 15px; /* More space */
+    opacity: 0.8;
+    cursor: pointer; /* Indicate it's clickable */
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.contact-icon:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Aesthetic Underline for H1 (REMOVE or modify, as the border-bottom on .user-info-header might replace it) */
+/* If you still want an underline directly under the H1, you can keep this, but consider making it more subtle */
+h1::after {
+    /* content: ''; */
+    /* position: absolute; */
+    /* bottom: 0; */
+    /* left: 0; */
+    /* width: 100%; */
+    /* height: 3px; */
+    /* background-color: #ffcc00; */
+    /* border-radius: 2px; */
+    display: none; /* Hide if using parent border-bottom */
+}
+
+
+/* Section Headings (existing) */
+.section h2 {
+    color: #ffcc00;
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+}
+
+/* NEW: Styles for User Details section */
+.user-details p {
+    color: #cccccc;
+    font-size: 1.1em;
+    margin-left: 15px;
+    margin-bottom: 10px; /* Less space between lines */
+}
+
+.user-details p strong {
+    color: #f0f0f0; /* Make labels stand out */
+    min-width: 80px; /* Align content if needed */
+    display: inline-block; /* For min-width to work */
+}
+
+.user-type-badge {
+    background-color: #ffcc00;
+    color: #1a1a1a; /* Dark text on yellow badge */
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.no-data {
+    color: #888;
+    font-style: italic;
+    margin-left: 15px;
+    padding: 10px 0;
+}
+
+/* List Styles (existing, but with adjustments for view links) */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 15px;
+}
+
+li {
+    background-color: #262626;
+    margin-bottom: 10px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid transparent;
+}
+
+li:hover {
+    background-color: #333333;
+    transform: translateY(-3px);
+    border-color: rgba(255, 204, 0, 0.5);
+}
+
+li span.title {
+    color: #f8f8f8;
+    font-weight: bold;
+    font-size: 1.1em;
+    flex-grow: 1; /* Allow title to take space */
+}
+
+li span.price {
+    color: #ffcc00;
+    font-weight: bold;
+    margin-left: 10px;
+    white-space: nowrap; /* Prevent price from wrapping */
+}
+
+li span.property-id {
+    color: #cccccc;
+    flex-grow: 1;
+}
+
+li span.status {
+    font-weight: bold;
+    margin-left: 8px;
+    white-space: nowrap;
+}
+
+li span.status.pending {
+    color: #ffcc00;
+}
+
+li span.status.approved {
+    color: #5cb85c;
+}
+
+/* NEW: View Link in List Items */
+.view-link {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 1px solid #ffcc00;
+    border-radius: 5px;
+    margin-left: 15px; /* Space from content */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap;
+}
+
+.view-link:hover {
+    background-color: #ffcc00;
+    color: #1a1a1a;
+}
+
+/* NEW: Button Styles for actions */
+.profile-actions {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px; /* Space between buttons */
+    justify-content: center; /* Center buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.05em;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+
+.btn-primary {
+    background-color: #ffcc00;
+    color: #1a1a1a;
+    border: 2px solid #ffcc00;
+}
+
+.btn-primary:hover {
+    background-color: #e6b800;
+    border-color: #e6b800;
+    color: #0d0d0d;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #ffcc00;
+    border: 2px solid #ffcc00;
+}
+
+.btn-secondary:hover {
+    background-color: #ffcc00;
+    color: #1a1a1a;
+}
+
+.view-all {
+    margin-top: 20px;
+    display: block; /* Make it a block element to center and occupy full width */
+    text-align: center;
+}
+
+/* Optional: Scrollbar styling (existing) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(34, 34, 34, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffcc00;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e6b800;
+}

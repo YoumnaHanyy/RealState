@@ -37,6 +37,8 @@ use App\Controller\SignupController;
 use App\Controller\LoginController;
 use App\Controller\ScheduleTourController;
 use App\Controller\AgentMessagesController;
+use App\Controller\ProfileController;
+
 
 
 // Routing logic
@@ -79,6 +81,11 @@ switch ($page) {
         }
         break;
 
+
+        case 'profile':
+    $controller = new ProfileController();
+    $controller->profile();
+    break;
 
     case 'details':
     include 'App/View/Details.php';
