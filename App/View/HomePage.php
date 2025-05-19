@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Housing</title>
-  <link rel="stylesheet" href="/REALSTATE/Public/css/HomePageeee.css">
+  <link rel="stylesheet" href="/REALSTATE/Public/css/HomePage2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,7 +18,9 @@
       
       <a href="/REALSTATE/index.php?page=properties"><i class="fas fa-building"></i> Properties</a>
       <a href="#"><i class="fas fa-concierge-bell"></i> Services</a>
-      <a href="#"><i class="fas fa-blog"></i> Blog →</a>
+    <?php if (isset($_SESSION['user_name'])): ?>
+  <a href="/REALSTATE/index.php?page=profile"><i class="fa-solid fa-user"></i> Profile →</a>
+<?php endif; ?>
       <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'agent'): ?>
         <a href="/REALSTATE/index.php?page=agentMessages"><i class="fas fa-envelope"></i> Messages</a>
       <?php endif; ?>
@@ -161,7 +163,7 @@
 
 
       <a href="index.php?page=properties&location=Cairo" class="city-card">
-        <img src="/REALSTATE/Public/images/pic5.jpg" alt="Chicago" class="city-image">
+        <img src="/REALSTATE/Public/images/cairo.jpg" alt="Chicago" class="city-image">
         <div class="city-overlay">
           <h3 class="city-name">Cairo</h3>
           <p class="properties-count">1,245 Properties</p>
@@ -169,7 +171,7 @@
 </a>
 
    <a href="index.php?page=properties&location=New%20Cairo" class="city-card">
-  <img src="/REALSTATE/Public/images/pic6.png" alt="New Cairo" class="city-image">
+  <img src="/REALSTATE/Public/images/new.jpg" alt="New Cairo" class="city-image">
   <div class="city-overlay">
     <h3 class="city-name">New Cairo</h3>
     <p class="properties-count">867 Properties</p>
@@ -177,7 +179,7 @@
 </a>
 
       <a href="index.php?page=properties&location=Giza" class="city-card">
-        <img src="/REALSTATE/Public/images/pic7.jpg" alt="Los Angeles" class="city-image">
+        <img src="/REALSTATE/Public/images/giza.jpg" alt="Los Angeles" class="city-image">
         <div class="city-overlay">
           <h3 class="city-name">Giza</h3>
           <p class="properties-count">1,032 Properties</p>
@@ -185,7 +187,7 @@
 </a>
 
       <a href="index.php?page=properties&location=Maadi" class="city-card">
-        <img src="/REALSTATE/Public/images/pic8.jpg" alt="San Francisco" class="city-image">
+        <img src="/REALSTATE/Public/images/maadi.jpg" alt="San Francisco" class="city-image">
         <div class="city-overlay">
           <h3 class="city-name">Maadi</h3>
           <p class="properties-count">754 Properties</p>
@@ -193,7 +195,7 @@
 </a>
 
       <div class="city-card">
-        <img src="/REALSTATE/Public/images/pic9.jpg" alt="Seattle" class="city-image">
+        <img src="/REALSTATE/Public/images/sheikh.jpg" alt="Seattle" class="city-image">
         <div class="city-overlay">
           <h3 class="city-name">Sheikh Zayed</h3>
           <p class="properties-count">623 Properties</p>
@@ -211,8 +213,8 @@
     <div class="footer-container">
       <div class="footer-top">
         <div class="footer-logo">
-          <div class="logo-icon">H</div>
-          <div class="logo-text">Homazon</div>
+          
+            <a href="http://localhost/REALSTATE/index.php?page=home" class="logo">HOUSOFT</a>
         </div>
         <div class="social-links">
           <a href="#" class="social-link">

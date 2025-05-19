@@ -1092,13 +1092,13 @@ textarea::-webkit-scrollbar-thumb:hover {
 }
 </style>
 <body>
-  <header class="navbar">
+ <header class="navbar">
     <a href="http://localhost/REALSTATE/index.php?page=home" class="logo">HOUSOFT</a>
     <nav>
       
       <a href="/REALSTATE/index.php?page=properties"><i class="fas fa-building"></i> Properties</a>
       <a href="#"><i class="fas fa-concierge-bell"></i> Services</a>
-      <a href="#"><i class="fas fa-blog"></i> Blog →</a>
+      <a href="/REALSTATE/index.php?page=profile"><i class="fa-solid fa-user"></i> Profile →</a>
       <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'agent'): ?>
         <a href="/REALSTATE/index.php?page=agentMessages"><i class="fas fa-envelope"></i> Messages</a>
       <?php endif; ?>
@@ -1118,8 +1118,6 @@ textarea::-webkit-scrollbar-thumb:hover {
       <span></span>
     </button>
   </header>
-
-
 
 
   <?php if (!empty($_SESSION['tour_error'])): ?>

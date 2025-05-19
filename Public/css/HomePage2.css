@@ -1174,7 +1174,7 @@ nav span {
 
 
        .footer {
-      background-color: var(--text-dark);
+      background-color: #121212;
       padding: 4rem var(--container-padding);
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
@@ -1210,7 +1210,7 @@ nav span {
     }
 
     .logo-text {
-      font-size: 1.25rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--text-light);
     }
@@ -1245,7 +1245,7 @@ nav span {
 
     .footer-col h3 {
       color: var(--text-light);
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       font-weight: 600;
       margin-top: 0;
       margin-bottom: 1.5rem;
@@ -1254,7 +1254,7 @@ nav span {
     .footer-col p, .footer-col a {
       color: var(--text-muted);
       margin: 0.5rem 0;
-      font-size: 0.95rem;
+      font-size: 1.2rem;
       line-height: 1.6;
       display: block;
       text-decoration: none;
@@ -1329,12 +1329,14 @@ nav span {
       align-items: center;
       font-size: 0.85rem;
       color: var(--text-muted);
+      background-color: #121212;
     }
 
     .footer-bottom a {
       color: var(--text-muted);
       text-decoration: none;
       transition: var(--transition-fast);
+      
     }
 
     .footer-bottom a:hover {

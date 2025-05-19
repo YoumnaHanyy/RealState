@@ -59,9 +59,13 @@ class LoginController {
             // Set session variables
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['full_name'];
+            $_SESSION['user_email'] = $user['email'];
             $_SESSION['user_role'] = $user['user_type'];
             $_SESSION['logged_in'] = true;
             
+
+            file_put_contents('login_debug.log', "Session after setting: " . print_r($_SESSION, true), FILE_APPEND);
+
             // Set a welcome message
             $_SESSION['home_message'] = "Welcome back, " . $user['full_name'] . "!";
             
