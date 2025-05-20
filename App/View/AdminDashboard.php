@@ -125,7 +125,7 @@ if (isset($_POST['delete_user']) && isset($_POST['user_id'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="properties.php">
+                        <a href="Properties.php">
                             <i class="fas fa-building"></i>
                             <span>Properties</span>
                         </a>
@@ -190,7 +190,7 @@ if (isset($_POST['delete_user']) && isset($_POST['user_id'])) {
                             <div class="progress-bar" style="width: 75%"></div>
                         </div>
                         <div class="stat-link">
-                            <a href="users.php">View Details <i class="fas fa-arrow-right"></i></a>
+                            <a href="AdminDashboard.php">View Details <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="stat-card">
@@ -205,7 +205,7 @@ if (isset($_POST['delete_user']) && isset($_POST['user_id'])) {
                             <div class="progress-bar" style="width: 65%"></div>
                         </div>
                         <div class="stat-link">
-                            <a href="properties.php">View Details <i class="fas fa-arrow-right"></i></a>
+                            <a href="AdminDashboard.php">View Details <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="stat-card">
