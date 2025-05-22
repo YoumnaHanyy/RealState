@@ -1,0 +1,349 @@
+LoginController::authenticate() called - 2025-05-13 22:55:35
+POST data: Array
+(
+    [csrf_token] => cc345aed3aa13d2c78ee221a08f7f377215e5250ccc8bc381c82762a115d257a
+    [email] => ziadomar@gmail.com
+    [password] => 123456qwer
+)
+
+CSRF token mismatch
+Login error: Security violation: CSRF token mismatch
+LoginController::authenticate() called - 2025-05-13 22:55:51
+POST data: Array
+(
+    [csrf_token] => 89c6bc5077ebae9fab0f639c5f24deacc797dd2e5dfd06c7fdaefbbdc90e9db7
+    [email] => ziadomar@gmail.com
+    [password] => 123456qwer
+)
+
+Attempting to verify login for email: ziadomar@gmail.com
+AuthModel::verifyLogin called for email: ziadomar@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: ziad  (ID: 18)
+Session variables set. Redirecting based on role: buyer
+LoginController::authenticate() called - 2025-05-13 22:57:14
+POST data: Array
+(
+    [csrf_token] => 89c6bc5077ebae9fab0f639c5f24deacc797dd2e5dfd06c7fdaefbbdc90e9db7
+    [email] => ziadomar@gmail.com
+    [password] => 123456qwer
+)
+
+Attempting to verify login for email: ziadomar@gmail.com
+AuthModel::verifyLogin called for email: ziadomar@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: ziad  (ID: 18)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-13 22:57:55
+POST data: Array
+(
+    [csrf_token] => 59b47d8fe0d315b76ee512c398c7b6783a2b8dfe86e0adfe5408ca864b75ba14
+    [email] => ziadomar@gmail.com
+    [password] => 123456qwer
+)
+
+Attempting to verify login for email: ziadomar@gmail.com
+AuthModel::verifyLogin called for email: ziadomar@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: ziad  (ID: 18)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-13 22:58:01
+POST data: Array
+(
+    [csrf_token] => 59b47d8fe0d315b76ee512c398c7b6783a2b8dfe86e0adfe5408ca864b75ba14
+    [email] => ziadomar@gmail.com
+    [password] => 123456qwerjj
+)
+
+Attempting to verify login for email: ziadomar@gmail.com
+AuthModel::verifyLogin called for email: ziadomar@gmail.com
+User found, verifying password
+Password verification failed
+Authentication failed
+Login error: Invalid email or password
+LoginController::authenticate() called - 2025-05-13 22:59:38
+POST data: Array
+(
+    [csrf_token] => bfa3e0d4b3de8517a486ea113667ddaea575781db82352b7261ca95585dd550a
+    [email] => ziadomar@gmail.com
+    [password] => 123456qwer
+)
+
+Attempting to verify login for email: ziadomar@gmail.com
+AuthModel::verifyLogin called for email: ziadomar@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: ziad  (ID: 18)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-13 22:59:43
+POST data: Array
+(
+    [csrf_token] => 25cdf2a09e8492eaa830991b9a35eac5a6e135b9ba7938c329af307ba7213562
+    [email] => ziadomar@gmail.com
+    [password] => wtwgwgw
+)
+
+Attempting to verify login for email: ziadomar@gmail.com
+AuthModel::verifyLogin called for email: ziadomar@gmail.com
+User found, verifying password
+Password verification failed
+Authentication failed
+Login error: Incorrect email or passwordLoginController::authenticate() called - 2025-05-16 17:53:36
+POST data: Array
+(
+    [csrf_token] => a15d3ade02fd7bfb4237b8f7445cf943b33c99d90ff352da3acd4f1cd875a6eb
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: s (ID: 1)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-16 17:54:00
+POST data: Array
+(
+    [csrf_token] => e41a0c3b49c029b1bc35f35b83107dd1752ca15f05ce0832ea76cdcb10037115
+    [email] => Yomn@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomn@gmail.com
+AuthModel::verifyLogin called for email: Yomn@gmail.com
+No user found with email: Yomn@gmail.com
+Authentication failed
+Login error: Incorrect email or password
+LoginController::authenticate() called - 2025-05-16 19:31:28
+POST data: Array
+(
+    [csrf_token] => 505cfe189ce682cc04526bf9e1e87cf8e15ec9506de627c7906475101987828e
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: s (ID: 1)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-16 19:56:24
+POST data: Array
+(
+    [csrf_token] => 61db29fd93612dbf762f215d8097309300ea8ee4449b2f4c10305eb3d686314c
+    [email] => Yomnazzwww@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazzwww@gmail.com
+AuthModel::verifyLogin called for email: Yomnazzwww@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: Yomna (ID: 7)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-16 21:46:40
+POST data: Array
+(
+    [csrf_token] => c07f06c72e058fa23b31649574d32974844f7063e5f977c7a875eaccd023d7a5
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: s (ID: 1)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-16 21:54:28
+POST data: Array
+(
+    [csrf_token] => 8bec77d25d58e400581e0571575d6133c55e4c258477a137191af0b9a5d25d63
+    [email] => menna@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: menna@gmail.com
+AuthModel::verifyLogin called for email: menna@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: menna (ID: 10)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-16 21:54:42
+POST data: Array
+(
+    [csrf_token] => 0fae8efaef35921fa9feabd2447795d8ed9769e27a27fef332a82ba0bc070938
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: s (ID: 1)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-16 22:02:21
+POST data: Array
+(
+    [csrf_token] => c907556e078793175bcbefde9f08c9fe07fc9346f6a517ecbc719eb001bf3215
+    [email] => marwan@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: marwan@gmail.com
+AuthModel::verifyLogin called for email: marwan@gmail.com
+No user found with email: marwan@gmail.com
+Authentication failed
+Login error: Incorrect email or password
+LoginController::authenticate() called - 2025-05-16 22:02:26
+POST data: Array
+(
+    [csrf_token] => 85387b2fad3af1defe5c01f06495d5ec427c325aac4dbfd2275340cc296ba634
+    [email] => marwan@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: marwan@gmail.com
+AuthModel::verifyLogin called for email: marwan@gmail.com
+No user found with email: marwan@gmail.com
+Authentication failed
+Login error: Incorrect email or password
+LoginController::authenticate() called - 2025-05-16 22:02:39
+POST data: Array
+(
+    [csrf_token] => be406a7e99ee37797ca6d45f786149d67d52b594ca71de7c2432eed8b75ae3e1
+    [email] => asmaa@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: asmaa@gmail.com
+AuthModel::verifyLogin called for email: asmaa@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: Asmaa (ID: 12)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-19 14:21:27
+POST data: Array
+(
+    [csrf_token] => 322f827a8eee0bd97408eeb224d8ccf36b3fa40ad3bd83013410597fef21695b
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: s (ID: 1)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-19 14:58:36
+POST data: Array
+(
+    [csrf_token] => fddbb8be2aeb622cfd4fdf1f4280f0db4453c6ca472be297e28853947ec2ae10
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: s (ID: 1)
+Session after setting: Array
+(
+    [csrf_token] => fddbb8be2aeb622cfd4fdf1f4280f0db4453c6ca472be297e28853947ec2ae10
+    [user_id] => 1
+    [user_name] => s
+    [user_email] => Yomnazz@gmail.com
+    [user_role] => buyer
+    [logged_in] => 1
+)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-19 15:00:13
+POST data: Array
+(
+    [csrf_token] => bc7644722d52858a227cdcbff0937c9e4ef31c18b6782bbeb9f9986d1332d826
+    [email] => menna@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: menna@gmail.com
+AuthModel::verifyLogin called for email: menna@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: menna (ID: 10)
+Session after setting: Array
+(
+    [csrf_token] => bc7644722d52858a227cdcbff0937c9e4ef31c18b6782bbeb9f9986d1332d826
+    [user_id] => 10
+    [user_name] => menna
+    [user_email] => menna@gmail.com
+    [user_role] => agent
+    [logged_in] => 1
+)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-19 18:45:04
+POST data: Array
+(
+    [csrf_token] => 9eaa402199a815b420c2820508a18fe1444a4b23efe080e5b9abfca218609e70
+    [email] => selviaibrahimgrace@gmail.com
+    [password] => 11111111
+)
+
+Attempting to verify login for email: selviaibrahimgrace@gmail.com
+AuthModel::verifyLogin called for email: selviaibrahimgrace@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: selvia ibrahim (ID: 2)
+Session after setting: Array
+(
+    [csrf_token] => 9eaa402199a815b420c2820508a18fe1444a4b23efe080e5b9abfca218609e70
+    [user_id] => 2
+    [user_name] => selvia ibrahim
+    [user_email] => selviaibrahimgrace@gmail.com
+    [user_role] => buyer
+    [logged_in] => 1
+)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-20 12:40:14
+POST data: Array
+(
+    [csrf_token] => bce86054413632d6d0cee87f8728abd6b9ead433efba1fe2b599f075c5545fa3
+    [email] => selviaibragimgrace@gmail.com
+    [password] => 11111111
+)
+
+Attempting to verify login for email: selviaibragimgrace@gmail.com
+AuthModel::verifyLogin called for email: selviaibragimgrace@gmail.com
+No user found with email: selviaibragimgrace@gmail.com
+Authentication failed
+Login error: Incorrect email or password
+LoginController::authenticate() called - 2025-05-20 12:40:31
+POST data: Array
+(
+    [csrf_token] => d89c06c32e62d865c2a4cc0b0071a6e07b8890e9c0442ea4126cd2eaa965018f
+    [email] => selviaibrahimgrace@gmail.com
+    [password] => 11111111
+)
+
+Attempting to verify login for email: selviaibrahimgrace@gmail.com
+AuthModel::verifyLogin called for email: selviaibrahimgrace@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: selvia ibrahim (ID: 2)
+Session after setting: Array
+(
+    [csrf_token] => d89c06c32e62d865c2a4cc0b0071a6e07b8890e9c0442ea4126cd2eaa965018f
+    [user_id] => 2
+    [user_name] => selvia ibrahim
+    [user_email] => selviaibrahimgrace@gmail.com
+    [user_role] => buyer
+    [logged_in] => 1
+)
+Session variables set. Redirecting to homepage.

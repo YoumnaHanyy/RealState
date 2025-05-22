@@ -1,0 +1,22 @@
+ScheduleTourController::index() called - 2025-05-20 15:45:01
+Request Method: POST
+Session (before checks): Array
+(
+    [user_id] => 2
+    [user_name] => selvia ibrahim
+    [user_email] => selviaibrahimgrace@gmail.com
+    [user_role] => buyer
+    [logged_in] => 1
+    [csrf_token] => f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1g2
+)
+POST data: Array
+(
+    [property_id] => 2
+    [tour_date] => 2025-05-25
+    [tour_time] => 14:00
+    [message] => Looking forward to seeing this property!
+    [csrf_token] => f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1g2
+)
+Attempting to schedule tour...
+Tour scheduled successfully!
+Redirecting back to property details page (ID: 2).
