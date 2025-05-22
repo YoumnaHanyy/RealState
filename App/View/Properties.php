@@ -6,6 +6,13 @@
     <title>Housing Listings</title>
     <link rel="stylesheet" href="/REALSTATE/Public/css/Properties.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<<<<<<< HEAD
+=======
+     <link rel="stylesheet" href="/REALSTATE/Public/css/HomePageeee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a
     <style>
 
 :root {
@@ -1017,13 +1024,21 @@ img[loading="lazy"].loaded {
     </style>
 </head>
 <body>
+<<<<<<< HEAD
   <header class="navbar">
+=======
+ <header class="navbar">
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a
     <a href="http://localhost/REALSTATE/index.php?page=home" class="logo">HOUSOFT</a>
     <nav>
       
       <a href="/REALSTATE/index.php?page=properties"><i class="fas fa-building"></i> Properties</a>
       <a href="#"><i class="fas fa-concierge-bell"></i> Services</a>
+<<<<<<< HEAD
       <a href="#"><i class="fas fa-blog"></i> Blog →</a>
+=======
+      <a href="/REALSTATE/index.php?page=profile"><i class="fa-solid fa-user"></i> Profile →</a>
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a
       <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'agent'): ?>
         <a href="/REALSTATE/index.php?page=agentMessages"><i class="fas fa-envelope"></i> Messages</a>
       <?php endif; ?>
@@ -1043,6 +1058,10 @@ img[loading="lazy"].loaded {
       <span></span>
     </button>
   </header>
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a
     <section class="headdd">
     <div class="container">
         <form class="search-form" method="get" action="index.php">

@@ -21,7 +21,11 @@ class LoginController {
         // Generate CSRF token for form security
         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         
+<<<<<<< HEAD
         require_once __DIR__. '/../View/Login.php';
+=======
+        require_once __DIR__ . '/../View/Login.php';
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a
     }
     
     /**
@@ -110,4 +114,8 @@ class LoginController {
         header("Location: /RealState/index.php?page=home");
         exit();
     }
+<<<<<<< HEAD
 }
+=======
+} 
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a

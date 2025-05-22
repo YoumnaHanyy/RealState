@@ -40,6 +40,7 @@ class ProfileController
         $userProperties = [];
         $requestedProperties = [];
 
+<<<<<<< HEAD
   
 
        require_once __DIR__ . '/../Model/Tours.php';
@@ -47,3 +48,10 @@ class ProfileController
         include __DIR__ . '/../View/Profile.php';
     }
 }
+=======
+    
+        // Load the profile view
+        include __DIR__ . '/../View/Profile.php';
+    }
+}
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a

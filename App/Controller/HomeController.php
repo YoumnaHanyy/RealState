@@ -28,5 +28,9 @@ class HomeController {
 
         $properties = $this->propertyRepo->getAll($conn, $filters);
         include_once __DIR__ . '/../View/Properties.php';
+<<<<<<< HEAD
+=======
+        include_once __DIR__ . '/../View/HomePage.php';
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a
     }
 }

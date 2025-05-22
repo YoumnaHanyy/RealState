@@ -288,6 +288,7 @@ Session after setting: Array
     [logged_in] => 1
 )
 Session variables set. Redirecting to homepage.
+<<<<<<< HEAD
 LoginController::authenticate() called - 2025-05-19 18:45:04
 POST data: Array
 (
@@ -307,10 +308,32 @@ Session after setting: Array
     [user_id] => 2
     [user_name] => selvia ibrahim
     [user_email] => selviaibrahimgrace@gmail.com
+=======
+LoginController::authenticate() called - 2025-05-19 18:52:15
+POST data: Array
+(
+    [csrf_token] => 8641db9d8a28187b39e8dd8ed675d05b0f08d1b329f0e5b3efaf193b357304b9
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: s (ID: 1)
+Session after setting: Array
+(
+    [csrf_token] => 8641db9d8a28187b39e8dd8ed675d05b0f08d1b329f0e5b3efaf193b357304b9
+    [user_id] => 1
+    [user_name] => s
+    [user_email] => Yomnazz@gmail.com
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a
     [user_role] => buyer
     [logged_in] => 1
 )
 Session variables set. Redirecting to homepage.
+<<<<<<< HEAD
 LoginController::authenticate() called - 2025-05-20 12:40:14
 POST data: Array
 (
@@ -344,6 +367,51 @@ Session after setting: Array
     [user_name] => selvia ibrahim
     [user_email] => selviaibrahimgrace@gmail.com
     [user_role] => buyer
+=======
+LoginController::authenticate() called - 2025-05-19 20:29:06
+POST data: Array
+(
+    [csrf_token] => eeb14e3a44d6ba86f12c9f12b4fb158d624daff96174d08c664aee97ce9fe0ec
+    [email] => menna@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: menna@gmail.com
+AuthModel::verifyLogin called for email: menna@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: menna (ID: 10)
+Session after setting: Array
+(
+    [csrf_token] => eeb14e3a44d6ba86f12c9f12b4fb158d624daff96174d08c664aee97ce9fe0ec
+    [user_id] => 10
+    [user_name] => menna
+    [user_email] => menna@gmail.com
+    [user_role] => agent
+    [logged_in] => 1
+)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-19 20:30:34
+POST data: Array
+(
+    [csrf_token] => 9efdda555dbdece717c9a4c10dbaf34c7937af446e32f1cdac89e822603a2f21
+    [email] => menna@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: menna@gmail.com
+AuthModel::verifyLogin called for email: menna@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: menna (ID: 10)
+Session after setting: Array
+(
+    [csrf_token] => 9efdda555dbdece717c9a4c10dbaf34c7937af446e32f1cdac89e822603a2f21
+    [user_id] => 10
+    [user_name] => menna
+    [user_email] => menna@gmail.com
+    [user_role] => agent
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a
     [logged_in] => 1
 )
 Session variables set. Redirecting to homepage.

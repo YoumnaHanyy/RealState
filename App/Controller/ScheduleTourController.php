@@ -15,6 +15,7 @@ class ScheduleTourController
 
     public function index()
     {
+<<<<<<< HEAD
         // Add debug logging at the beginning of the index method
         file_put_contents('tour_debug.log', "ScheduleTourController::index() called - " . date('Y-m-d H:i:s') . "\n", FILE_APPEND);
         file_put_contents('tour_debug.log', "Request Method: " . $_SERVER['REQUEST_METHOD'] . "\n", FILE_APPEND);
@@ -22,6 +23,8 @@ class ScheduleTourController
         file_put_contents('tour_debug.log', "POST data: " . print_r($_POST, true) . "\n", FILE_APPEND);
 
 
+=======
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a
         if (session_status() === PHP_SESSION_NONE) session_start();
 
         if (empty($_SESSION['logged_in']) || !isset($_SESSION['user_name'])) {
@@ -29,20 +32,27 @@ class ScheduleTourController
             if (!empty($_POST['property_id'])) {
                 $_SESSION['return_to'] = "/RealState/index.php?page=details&id=" . urlencode($_POST['property_id']);
             }
+<<<<<<< HEAD
             // Log redirection for not logged in users
             file_put_contents('tour_debug.log', "User not logged in. Redirecting to login page.\n", FILE_APPEND);
+=======
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a
             header("Location: /RealState/index.php?page=login");
             exit;
         }
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+<<<<<<< HEAD
             // Log invalid request method
             file_put_contents('tour_debug.log', "Invalid request method (" . $_SERVER['REQUEST_METHOD'] . "). Exiting.\n", FILE_APPEND);
+=======
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a
             http_response_code(405);
             exit('Method Not Allowed');
         }
 
         try {
+<<<<<<< HEAD
             // Log attempt to schedule tour
             file_put_contents('tour_debug.log', "Attempting to schedule tour...\n", FILE_APPEND);
             $facade = new TourFacade();
@@ -64,3 +74,17 @@ class ScheduleTourController
         exit;
     }
 }
+=======
+            $facade = new TourFacade();
+            $facade->scheduleTour($_POST, $_SESSION);                                        //hena el facade etnadah
+        } catch (Exception $e) {
+            $_SESSION['tour_error'] = "Error scheduling tour: " . $e->getMessage();
+        }
+
+        // Always redirect back to the property details page
+        $propertyId = $_POST['property_id'] ?? '';
+        header("Location: /RealState/index.php?page=details&id=" . urlencode($propertyId));
+        exit;
+    }
+}
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a

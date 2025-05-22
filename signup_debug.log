@@ -1114,6 +1114,7 @@ UserRepository: Constructed with database connection
 UserRepository: Constructed with database connection
 UserRepository: Constructed with database connection
 UserRepository: Constructed with database connection
+<<<<<<< HEAD
 SignupController::signup() called - 2025-05-19 18:33:59
 POST data: Array
 (
@@ -1148,3 +1149,5 @@ Strategy result: Array
 )
 
 
+=======
+>>>>>>> 73b493cc0e02677a94d46ab41826ca8be8dd7e2a
