@@ -1014,6 +1014,18 @@ img[loading="lazy"].loaded {
     scroll-behavior: auto !important;
   }
 }
+footer {
+  background-color: rgba(18, 18, 18, 0.95);
+  padding: 2rem var(--container-padding);
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+footer p {
+  color: var(--text-muted);
+  font-size: 1.4rem;
+}
+
     </style>
 </head>
 <body>
@@ -1094,5 +1106,8 @@ img[loading="lazy"].loaded {
         </div>
     </div>
                     </section>
+                     <footer>
+    <p>&copy; <?= date('Y') ?> HOUSOFT. All rights reserved.</p>
+  </footer>
 </body>
 </html>

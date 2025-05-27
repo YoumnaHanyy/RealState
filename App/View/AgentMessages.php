@@ -573,10 +573,12 @@ footer p {
         </div>
       <?php else: ?>
         <?php foreach ($notifications as $index => $note): ?>
-          <div class="notification <?= $note['is_read'] ? 'read' : 'unread' ?>" style="--i: <?= $index ?>">
+        <div class="notification <?= ($note['is_read'] ?? 0) ? 'read' : 'unread' ?>" style="--i: <?= $index ?>">
+
             <div class="notification-header">
               <div class="notification-status">
-                <?php if (!$note['is_read']): ?>
+                <?php if (!($note['is_read'] ?? 0)): ?>
+
                   <span><i class="fas fa-circle" style="color: var(--accent-blue); font-size: 0.8rem;"></i> New</span>
                 <?php else: ?>
                   <span><i class="far fa-check-circle" style="color: var(--text-muted);"></i> Read</span>

@@ -428,3 +428,118 @@ Session after setting: Array
     [logged_in] => 1
 )
 Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-19 20:56:28
+POST data: Array
+(
+    [csrf_token] => ed971a4a22875f9ecda30f7333f861ad228b2d1a35054ee0fe03e63d10adf68d
+    [email] => menna@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: menna@gmail.com
+AuthModel::verifyLogin called for email: menna@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: menna (ID: 10)
+Session after setting: Array
+(
+    [csrf_token] => ed971a4a22875f9ecda30f7333f861ad228b2d1a35054ee0fe03e63d10adf68d
+    [user_id] => 10
+    [user_name] => menna
+    [user_email] => menna@gmail.com
+    [user_role] => agent
+    [logged_in] => 1
+)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-27 22:40:37
+POST data: Array
+(
+    [csrf_token] => 5fda6eaf8e5a2fe0e1f941669f0c502cd86d31d800cabc68e8a0975822d10ced
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: Yomna Hany Ibrahim (ID: 1)
+Session after setting: Array
+(
+    [csrf_token] => 5fda6eaf8e5a2fe0e1f941669f0c502cd86d31d800cabc68e8a0975822d10ced
+    [user_id] => 1
+    [user_name] => Yomna Hany Ibrahim
+    [user_email] => Yomnazz@gmail.com
+    [user_role] => 
+    [logged_in] => 1
+)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-27 22:41:05
+POST data: Array
+(
+    [csrf_token] => c5dad7df5005e73b7b43a3e885a6e51823cd411d7335a5441b0f5e4873976f65
+    [email] => Yomnazzz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazzz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazzz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: Yomna Hany Ibrahim (ID: 2)
+Session after setting: Array
+(
+    [csrf_token] => c5dad7df5005e73b7b43a3e885a6e51823cd411d7335a5441b0f5e4873976f65
+    [user_id] => 2
+    [user_name] => Yomna Hany Ibrahim
+    [user_email] => Yomnazzz@gmail.com
+    [user_role] => agent
+    [logged_in] => 1
+)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-27 22:43:33
+POST data: Array
+(
+    [csrf_token] => 3d69fb51ea343e7b3001e225858fd3b8ccb7376e040fd1e4ea5d656adf601793
+    [email] => Yomnazz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: Yomna Hany Ibrahim (ID: 1)
+Session after setting: Array
+(
+    [csrf_token] => 3d69fb51ea343e7b3001e225858fd3b8ccb7376e040fd1e4ea5d656adf601793
+    [user_id] => 1
+    [user_name] => Yomna Hany Ibrahim
+    [user_email] => Yomnazz@gmail.com
+    [user_role] => 
+    [logged_in] => 1
+)
+Session variables set. Redirecting to homepage.
+LoginController::authenticate() called - 2025-05-27 22:44:13
+POST data: Array
+(
+    [csrf_token] => 088de9959330a09a6b9a1cc204b0d7923c889b7707428c69c46996fca77dce77
+    [email] => Yomnazzz@gmail.com
+    [password] => Yomnazz123
+)
+
+Attempting to verify login for email: Yomnazzz@gmail.com
+AuthModel::verifyLogin called for email: Yomnazzz@gmail.com
+User found, verifying password
+Password verified successfully
+Authentication successful for user: Yomna Hany Ibrahim (ID: 2)
+Session after setting: Array
+(
+    [csrf_token] => 088de9959330a09a6b9a1cc204b0d7923c889b7707428c69c46996fca77dce77
+    [user_id] => 2
+    [user_name] => Yomna Hany Ibrahim
+    [user_email] => Yomnazzz@gmail.com
+    [user_role] => agent
+    [logged_in] => 1
+)
+Session variables set. Redirecting to homepage.

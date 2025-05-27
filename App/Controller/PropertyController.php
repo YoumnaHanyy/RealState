@@ -5,7 +5,8 @@ session_start();
 
 require_once __DIR__ . '/../Config/Database.php';
 require_once __DIR__ . '/../Model/AddProperty.php';
-
+require_once __DIR__ . '/../Builder/PropertyBuilder.php';
+use App\Builder\PropertyBuilder;
 use App\Config\Database;
 use App\Model\AddProperty;
 
@@ -53,14 +54,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-      $propertyData = [
-    'name' => $name,
-    'price' => $price,
-    'developer' => $developer,
-    'location' => $location,
-    'image' => $unique_image_name,
-    'created_by' => $_SESSION['user_name'] ?? 'Unknown'
-];
+    $builder = new PropertyBuilder();
+$propertyData = $builder->setName($name)
+    ->setPrice($price)
+    ->setDeveloper($developer)
+    ->setLocation($location)
+    ->setImage($unique_image_name)
+    ->setCreatedBy($_SESSION['user_name'] ?? 'Unknown')
+    ->build();
 
         if ($propertyModel->createProperty($propertyData)) {
             $_SESSION['success_message'] = "Property added successfully!";

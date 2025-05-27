@@ -1090,6 +1090,18 @@ textarea::-webkit-scrollbar-thumb {
 textarea::-webkit-scrollbar-thumb:hover {
   background: #a0aec0;
 }
+footer {
+  background-color: rgba(18, 18, 18, 0.95);
+  padding: 2rem var(--container-padding);
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+footer p {
+  color: var(--text-muted);
+  font-size: 1.4rem;
+}
+
 </style>
 <body>
  <header class="navbar">
@@ -1302,6 +1314,9 @@ textarea::-webkit-scrollbar-thumb:hover {
     </form>
   </div>
 </div>
+  <footer>
+    <p>&copy; <?= date('Y') ?> HOUSOFT. All rights reserved.</p>
+  </footer>
 
 <script>
 document.querySelector('.purchase-button').addEventListener('click', function (e) {

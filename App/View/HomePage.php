@@ -293,6 +293,9 @@
       </div>
     </div>
   </footer>
+   <footer>
+    <p>&copy; <?= date('Y') ?> HOUSOFT. All rights reserved.</p>
+  </footer>
   <script src="/REALSTATE/Public/js/HomePagee.js"></script>
 </body>
 </html>

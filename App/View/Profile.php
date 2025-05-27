@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>User Profile</title>
+
+    <link rel="stylesheet" href="/RealState/Public/css/profilee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="profile-page">
+
     <link rel="stylesheet" href="/RealState/Public/css/profileee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
      <link rel="stylesheet" href="/REALSTATE/Public/css/HomePageeee.css">
@@ -11,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="profile-page">
-    <header class="navbar">
+     <header class="navbar">
     <a href="http://localhost/REALSTATE/index.php?page=home" class="logo">HOUSOFT</a>
     <nav>
       
@@ -37,6 +43,7 @@
       <span></span>
     </button>
   </header>
+
     <div class="container">
 
         <div class="user-info-header">
@@ -89,6 +96,21 @@
         </div>
         <?php endif; ?>
 
+
+      <?php if (empty($scheduledTours)): ?>
+    <p><em>No tours scheduled yet.</em></p>
+<?php else: ?>
+    <ul>
+        <?php foreach ($scheduledTours as $tour): ?>
+            <li>
+                <?= htmlspecialchars($tour['property_title']) ?> — 
+                <?= htmlspecialchars($tour['scheduled_date']) ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
+
         <div class="section added-properties">
             <h2>Added Properties</h2>
             <?php if (isset($userProperties) && !empty($userProperties)): ?>
@@ -121,6 +143,7 @@
                 <p class="no-data">No property requests made yet.</p>
             <?php endif; ?>
         </div>
+
 
     </div>
 </body>
