@@ -97,35 +97,27 @@
         <?php endif; ?>
 
 
-      <?php if (empty($scheduledTours)): ?>
-    <p><em>No tours scheduled yet.</em></p>
-<?php else: ?>
-    <ul>
-        <?php foreach ($scheduledTours as $tour): ?>
-            <li>
-                <?= htmlspecialchars($tour['property_title']) ?> — 
-                <?= htmlspecialchars($tour['scheduled_date']) ?>
-            </li>
-        <?php endforeach; ?>
-    </ul>
-<?php endif; ?>
+     
 
-
-        <div class="section added-properties">
-            <h2>Added Properties</h2>
-            <?php if (isset($userProperties) && !empty($userProperties)): ?>
-            <ul>
-                <?php foreach ($userProperties as $property): ?>
-                    <li>
-                        <span class="title"><?= htmlspecialchars($property['title'] ?? '') ?></span> -
-                        <span class="price"><?= htmlspecialchars($property['price'] ?? '') ?>$</span>
-                       <a href="/RealState/index.php?page=details&id=<?= htmlspecialchars($property['id'] ?? '') ?>" class="view-link">View Property</a>
-                <?php endforeach; ?>
-            </ul>
-            <?php else: ?>
-                <p class="no-data">No properties added yet.</p>
-            <?php endif; ?>
-        </div>
+<div class="section scheduled-tours">
+    <h2>Scheduled Tours</h2>
+    <?php if (empty($scheduledTours)): ?>
+        <p class="no-data"><em>No tours scheduled yet.</em></p>
+    <?php else: ?>
+        <ul>
+            <?php foreach ($scheduledTours as $tour): ?>
+                <li>
+                    <strong><?= htmlspecialchars($tour['property_name'] ?? 'Unknown Property') ?></strong><br>
+                    Date: <?= htmlspecialchars(date('F j, Y', strtotime($tour['tour_date'] ?? ''))) ?><br>
+                    Time: <?= htmlspecialchars($tour['tour_time'] ?? '') ?><br>
+                    Phone: <?= htmlspecialchars($tour['phone'] ?? '') ?><br>
+                    Notes: <?= nl2br(htmlspecialchars($tour['notes'] ?? 'None')) ?><br>
+                    <a href="/RealState/index.php?page=details&id=<?= htmlspecialchars($tour['property_id'] ?? '') ?>" class="view-link">View Property</a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+</div>
 
         <div class="section requested-properties">
             <h2>Requested Properties</h2>

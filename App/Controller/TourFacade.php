@@ -52,4 +52,18 @@ class TourFacade
 
         $session['tour_success'] = "Tour scheduled successfully on $tourDate at $tourTime.";
     }
+public function getToursByUser(string $userName): array
+{
+    $stmt = $this->conn->prepare(
+        "SELECT t.*, p.name AS property_name
+         FROM tours t
+         JOIN properties p ON t.property_id = p.id
+         WHERE t.user_name = ?
+         ORDER BY t.tour_date DESC, t.tour_time DESC"
+    );
+    $stmt->execute([$userName]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
 }

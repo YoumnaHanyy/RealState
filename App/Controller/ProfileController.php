@@ -2,46 +2,46 @@
 
 namespace App\Controller;
 
+use App\Controller\TourFacade;
+
 class ProfileController
 {
+    private $tourFacade;
+
     public function __construct()
     {
-        // No facade used in this version
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $this->tourFacade = new TourFacade();
     }
 
     public function profile()
     {
-      
+        $userId   = $_SESSION['user_id'] ?? null;
+        $userName = $_SESSION['user_name'] ?? null;
 
-        // Get session data
-        $userId    = $_SESSION['user_id'] ?? null;
-        $userName  = $_SESSION['user_name'] ?? 'Guest';
-        $userEmail = $_SESSION['user_email'] ?? 'Not available';
-        $userType  = $_SESSION['user_role'] ?? 'User';
-
-        if (!$userId) {
-            echo "<h1>Error: User not logged in.</h1>";
-            return;
+        if (!$userId || !$userName) {
+            header("Location: /login.php");
+            exit;
         }
 
-        // Build the $user array for the view
+        // Build user array for the view
         $user = [
-            'id'         => $userId,
-            'name'       => $userName,
-            'email'      => $userEmail,
-            'user_type'  => $userType,
+            'id'           => $userId,
+            'name'         => $userName,
+            'email'        => $_SESSION['user_email'] ?? '',
+            'user_type'    => $_SESSION['user_role'] ?? 'User',
             'phone_number' => $_SESSION['user_phone'] ?? '',
             'address'      => $_SESSION['user_address'] ?? '',
             'avatar_url'   => $_SESSION['user_avatar'] ?? '',
         ];
 
-        // These could be empty or fetched later if needed
-        $savedProperties = [];
-        $userProperties = [];
-        $requestedProperties = [];
+        // Fetch user's scheduled tours
+        $scheduledTours = $this->tourFacade->getToursByUser($userName);
 
-    
-        // Load the profile view
+        // Pass $user and $scheduledTours to the view
         include __DIR__ . '/../View/Profile.php';
     }
 }

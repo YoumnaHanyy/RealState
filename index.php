@@ -17,7 +17,7 @@ require_once __DIR__ . '/App/Model/AuthModel.php';
 require_once __DIR__ . '/App/Controller/HomeController.php';
 require_once __DIR__ . '/App/Controller/SignupController.php';
 require_once __DIR__ . '/App/Controller/LoginController.php';
-
+require_once __DIR__ . '/App/Controller/LoginController.php';
 
 // Require signup strategy classes
 require_once __DIR__ . '/App/Controller/SignupStrategy/SignupStrategyInterface.php';
@@ -101,6 +101,10 @@ switch ($page) {
     $controller->index();
     break;
 
+      case 'dashboard':
+        $controller->Dashboard(); // Add this line
+        break;
+        
     default:
         echo "404 - Page not found";
 } 
